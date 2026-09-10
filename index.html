@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" class="dark scroll-smooth">
+<html lang="en" class="dark scroll-smooth" data-theme="cyan">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OmniCalc — Modern Precision Utilities</title>
+  <title>OmniCalc — Modern Multi-Theme Computation Suite</title>
 
-  <!-- Typography: Syne (Display) & Inter (UI) -->
+  <!-- Google Fonts: Syne & Inter & Space Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -21,20 +21,6 @@
             sans: ['Inter', 'sans-serif'],
             display: ['Syne', 'sans-serif'],
             mono: ['"Space Mono"', 'monospace'],
-          },
-          colors: {
-            brand: {
-              cyan: '#06B6D4',
-              violet: '#8B5CF6',
-              accent: '#3B82F6',
-            },
-            base: {
-              950: '#07090E',
-              900: '#0D111A',
-              850: '#131824',
-              border: '#1F293D',
-              borderGlow: 'rgba(6, 182, 212, 0.2)'
-            }
           }
         }
       }
@@ -42,218 +28,286 @@
   </script>
 
   <style>
-    .ambient-glow {
-      background: radial-gradient(circle at 50% 0%, rgba(6, 182, 212, 0.12), transparent 45%),
-                  radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.08), transparent 35%);
+    /* CSS Variables for Dynamic Multi-Themes */
+    :root {
+      --bg-base: #F8FAFC;
+      --bg-card: #FFFFFF;
+      --bg-input: #F1F5F9;
+      --border-color: #E2E8F0;
+      --text-main: #0F172A;
+      --text-muted: #64748B;
     }
+
+    html.dark {
+      --bg-base: #07090E;
+      --bg-card: #0D111A;
+      --bg-input: #131824;
+      --border-color: #1F293D;
+      --text-main: #F8FAFC;
+      --text-muted: #94A3B8;
+    }
+
+    /* 1. Theme: Cyber Cyan */
+    html[data-theme="cyan"] {
+      --brand-primary: #06B6D4;
+      --brand-secondary: #8B5CF6;
+      --brand-btn-text: #07090E;
+    }
+
+    /* 2. Theme: Emerald Matrix */
+    html[data-theme="emerald"] {
+      --brand-primary: #10B981;
+      --brand-secondary: #06B6D4;
+      --brand-btn-text: #07090E;
+    }
+
+    /* 3. Theme: Hyper Violet */
+    html[data-theme="violet"] {
+      --brand-primary: #A855F7;
+      --brand-secondary: #EC4899;
+      --brand-btn-text: #FFFFFF;
+    }
+
+    /* Helper styles referencing dynamic variables */
+    .app-bg { background-color: var(--bg-base); color: var(--text-main); }
+    .card-surface { background-color: var(--bg-card); border-color: var(--border-color); }
+    .input-surface { background-color: var(--bg-input); border-color: var(--border-color); color: var(--text-main); }
+    .text-subtle { color: var(--text-muted); }
+    .brand-color { color: var(--brand-primary); }
+    .border-subtle { border-color: var(--border-color); }
+
+    .brand-btn {
+      background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary));
+      color: var(--brand-btn-text);
+    }
+
     .mesh-border {
-      box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.07);
+      box-shadow: 0 0 0 1px var(--border-color);
+      transition: all 0.2s ease;
     }
     .mesh-border:hover {
-      box-shadow: 0 0 0 1px rgba(6, 182, 212, 0.4), 0 8px 24px -4px rgba(6, 182, 212, 0.12);
+      box-shadow: 0 0 0 1px var(--brand-primary), 0 8px 24px -4px rgba(6, 182, 212, 0.15);
     }
   </style>
 </head>
-<body class="bg-base-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col ambient-glow selection:bg-brand-cyan/20 selection:text-brand-cyan">
+<body class="app-bg font-sans antialiased min-h-screen flex flex-col selection:bg-cyan-500/20 selection:text-cyan-400">
 
-  <!-- Floating Minimal Navbar -->
-  <header class="sticky top-0 z-50 backdrop-blur-xl bg-base-950/75 border-b border-base-border">
+  <!-- Top Navigation Bar -->
+  <header class="sticky top-0 z-50 backdrop-blur-xl border-b border-subtle bg-opacity-80">
     <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
       <a href="#home" class="flex items-center gap-3 group">
-        <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-brand-cyan via-brand-accent to-brand-violet p-[1.5px]">
-          <div class="w-full h-full bg-base-950 rounded-[6.5px] flex items-center justify-center">
-            <span class="font-display text-sm font-bold text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan to-brand-violet">OC</span>
+        <div class="w-8 h-8 rounded-lg brand-btn p-[1.5px] shadow-sm">
+          <div class="w-full h-full card-surface rounded-[6.5px] flex items-center justify-center">
+            <span class="font-display text-sm font-bold brand-color">OC</span>
           </div>
         </div>
-        <span class="font-display font-bold text-lg tracking-wide text-white group-hover:text-cyan-300 transition-colors">OmniCalc</span>
+        <span class="font-display font-bold text-lg tracking-wide group-hover:opacity-80 transition">OmniCalc</span>
       </a>
 
-      <div class="flex items-center gap-2">
-        <a href="#home" class="text-xs font-mono px-3.5 py-1.5 rounded-lg border border-base-border hover:border-brand-cyan/50 bg-base-900 text-slate-300 transition">
+      <!-- Controls: Theme Selector + Mode Toggle + Directory -->
+      <div class="flex items-center gap-3">
+        <!-- Palette Selector -->
+        <div class="flex items-center gap-1.5 p-1 rounded-xl card-surface border border-subtle">
+          <button onclick="setTheme('cyan')" class="w-4 h-4 rounded-full bg-cyan-400 hover:scale-110 transition" title="Cyber Cyan"></button>
+          <button onclick="setTheme('emerald')" class="w-4 h-4 rounded-full bg-emerald-400 hover:scale-110 transition" title="Emerald Matrix"></button>
+          <button onclick="setTheme('violet')" class="w-4 h-4 rounded-full bg-purple-500 hover:scale-110 transition" title="Hyper Violet"></button>
+        </div>
+
+        <!-- Light / Dark Mode Toggle Button -->
+        <button onclick="toggleDarkMode()" class="p-2 rounded-xl card-surface border border-subtle hover:scale-105 transition" title="Toggle Mode">
+          <span id="theme-icon" class="text-xs">☀️</span>
+        </button>
+
+        <a href="#home" class="text-xs font-mono px-3 py-1.5 rounded-xl border border-subtle card-surface hover:opacity-80 transition">
           Directory
         </a>
       </div>
     </div>
   </header>
 
-  <!-- Dynamic Content Workspace -->
+  <!-- Workspace Container -->
   <main class="flex-grow max-w-6xl w-full mx-auto px-6 py-12">
 
     <!-- ================= 0. DIRECTORY (HOME PAGE) ================= -->
     <section id="view-home" class="page-view space-y-16">
-      
-      <!-- Modern Hero Section -->
       <div class="text-center max-w-2xl mx-auto pt-6">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-cyan/10 border border-brand-cyan/30 text-brand-cyan text-xs font-mono font-medium mb-4">
-          <span class="w-2 h-2 rounded-full bg-brand-cyan animate-pulse"></span> Complete Suite — 10 Calculators
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full card-surface border border-subtle brand-color text-xs font-mono font-medium mb-4">
+          <span class="w-2 h-2 rounded-full brand-btn animate-pulse"></span> Multi-Theme & Multi-Currency Engine
         </div>
-        <h1 class="font-display text-4xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight leading-[1.1]">
-          Utility tools built for <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan via-blue-400 to-brand-violet">maximum speed</span>.
+        <h1 class="font-display text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.1]">
+          Tools calibrated for <span class="brand-color">instant clarity</span>.
         </h1>
-        <p class="text-slate-400 text-sm md:text-base mt-4 leading-relaxed font-normal">
-          Client-side calculations with zero telemetry, zero latency, and dedicated linkable workspaces.
+        <p class="text-subtle text-sm md:text-base mt-4 leading-relaxed font-normal">
+          Client-side execution with international currency support, real estate modeling, and customizable interfaces.
         </p>
       </div>
 
-      <!-- Finance Section -->
+      <!-- Finance & Real Estate -->
       <div>
-        <div class="flex items-center gap-2 pb-3 mb-5 border-b border-base-border">
-          <span class="font-mono text-xs font-semibold uppercase tracking-wider text-brand-cyan">01 / Finance & Real Estate</span>
+        <div class="flex items-center gap-2 pb-3 mb-5 border-b border-subtle">
+          <span class="font-mono text-xs font-semibold uppercase tracking-wider brand-color">01 / Finance & Real Estate (Multi-Currency)</span>
         </div>
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <a href="#mortgage" class="mesh-border bg-base-900 p-5 rounded-2xl transition-all duration-200 flex flex-col justify-between group">
+          <a href="#mortgage" class="mesh-border card-surface p-5 rounded-2xl transition-all flex flex-col justify-between group">
             <div>
-              <h2 class="font-semibold text-white group-hover:text-brand-cyan transition-colors">Mortgage (PITI)</h2>
-              <p class="text-xs text-slate-400 mt-2 leading-relaxed">Monthly loan principal, rate, taxes, and complete home amortization.</p>
+              <h2 class="font-semibold group-hover:brand-color transition-colors">Mortgage (PITI)</h2>
+              <p class="text-xs text-subtle mt-2 leading-relaxed">Monthly principal, rate, taxes, and complete home debt amortization.</p>
             </div>
-            <span class="text-[11px] font-mono text-brand-cyan mt-5 inline-block">Launch tool →</span>
+            <span class="text-[11px] font-mono brand-color mt-5 inline-block">Launch tool →</span>
           </a>
 
-          <a href="#loan" class="mesh-border bg-base-900 p-5 rounded-2xl transition-all duration-200 flex flex-col justify-between group">
+          <a href="#loan" class="mesh-border card-surface p-5 rounded-2xl transition-all flex flex-col justify-between group">
             <div>
-              <h2 class="font-semibold text-white group-hover:text-brand-cyan transition-colors">Loan Calculator</h2>
-              <p class="text-xs text-slate-400 mt-2 leading-relaxed">Personal, student, and auto loans with total debt interest cost.</p>
+              <h2 class="font-semibold group-hover:brand-color transition-colors">Loan Calculator</h2>
+              <p class="text-xs text-subtle mt-2 leading-relaxed">Personal, auto, and student loans with total interest costs.</p>
             </div>
-            <span class="text-[11px] font-mono text-brand-cyan mt-5 inline-block">Launch tool →</span>
+            <span class="text-[11px] font-mono brand-color mt-5 inline-block">Launch tool →</span>
           </a>
 
-          <a href="#compound" class="mesh-border bg-base-900 p-5 rounded-2xl transition-all duration-200 flex flex-col justify-between group">
+          <a href="#compound" class="mesh-border card-surface p-5 rounded-2xl transition-all flex flex-col justify-between group">
             <div>
-              <h2 class="font-semibold text-white group-hover:text-brand-cyan transition-colors">Compound Interest</h2>
-              <p class="text-xs text-slate-400 mt-2 leading-relaxed">Forecast portfolio yield and exponential wealth growth over time.</p>
+              <h2 class="font-semibold group-hover:brand-color transition-colors">Compound Interest</h2>
+              <p class="text-xs text-subtle mt-2 leading-relaxed">Forecast portfolio yield and compound wealth growth over time.</p>
             </div>
-            <span class="text-[11px] font-mono text-brand-cyan mt-5 inline-block">Launch tool →</span>
+            <span class="text-[11px] font-mono brand-color mt-5 inline-block">Launch tool →</span>
           </a>
 
-          <a href="#salary" class="mesh-border bg-base-900 p-5 rounded-2xl transition-all duration-200 flex flex-col justify-between group">
+          <a href="#salary" class="mesh-border card-surface p-5 rounded-2xl transition-all flex flex-col justify-between group">
             <div>
-              <h2 class="font-semibold text-white group-hover:text-brand-cyan transition-colors">Salary & Paycheck</h2>
-              <p class="text-xs text-slate-400 mt-2 leading-relaxed">Estimate take-home earnings after blended tax and payroll deductions.</p>
+              <h2 class="font-semibold group-hover:brand-color transition-colors">Salary & Paycheck</h2>
+              <p class="text-xs text-subtle mt-2 leading-relaxed">Estimate take-home earnings across all common pay periods.</p>
             </div>
-            <span class="text-[11px] font-mono text-brand-cyan mt-5 inline-block">Launch tool →</span>
-          </a>
-        </div>
-      </div>
-
-      <!-- Health Section -->
-      <div>
-        <div class="flex items-center gap-2 pb-3 mb-5 border-b border-base-border">
-          <span class="font-mono text-xs font-semibold uppercase tracking-wider text-brand-violet">02 / Health & Biometrics</span>
-        </div>
-        <div class="grid sm:grid-cols-3 gap-4">
-          <a href="#bmi" class="mesh-border bg-base-900 p-5 rounded-2xl transition-all duration-200 flex flex-col justify-between group">
-            <div>
-              <h2 class="font-semibold text-white group-hover:text-brand-violet transition-colors">BMI Calculator</h2>
-              <p class="text-xs text-slate-400 mt-2 leading-relaxed">Classify weight-to-height categories across WHO clinical bands.</p>
-            </div>
-            <span class="text-[11px] font-mono text-brand-violet mt-5 inline-block">Launch tool →</span>
-          </a>
-
-          <a href="#bmr" class="mesh-border bg-base-900 p-5 rounded-2xl transition-all duration-200 flex flex-col justify-between group">
-            <div>
-              <h2 class="font-semibold text-white group-hover:text-brand-violet transition-colors">Calorie & BMR</h2>
-              <p class="text-xs text-slate-400 mt-2 leading-relaxed">Resting basal expenditure & maintenance burn adjusted by lifestyle.</p>
-            </div>
-            <span class="text-[11px] font-mono text-brand-violet mt-5 inline-block">Launch tool →</span>
-          </a>
-
-          <a href="#pregnancy" class="mesh-border bg-base-900 p-5 rounded-2xl transition-all duration-200 flex flex-col justify-between group">
-            <div>
-              <h2 class="font-semibold text-white group-hover:text-brand-violet transition-colors">Pregnancy Due Date</h2>
-              <p class="text-xs text-slate-400 mt-2 leading-relaxed">Conception projections and trimester tracking based on LMP.</p>
-            </div>
-            <span class="text-[11px] font-mono text-brand-violet mt-5 inline-block">Launch tool →</span>
+            <span class="text-[11px] font-mono brand-color mt-5 inline-block">Launch tool →</span>
           </a>
         </div>
       </div>
 
-      <!-- Utilities Section -->
+      <!-- Health & Biometrics -->
       <div>
-        <div class="flex items-center gap-2 pb-3 mb-5 border-b border-base-border">
-          <span class="font-mono text-xs font-semibold uppercase tracking-wider text-blue-400">03 / Utilities & Math</span>
+        <div class="flex items-center gap-2 pb-3 mb-5 border-b border-subtle">
+          <span class="font-mono text-xs font-semibold uppercase tracking-wider brand-color">02 / Health & Biometrics</span>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4">
+          <a href="#bmi" class="mesh-border card-surface p-5 rounded-2xl transition-all flex flex-col justify-between group">
+            <div>
+              <h2 class="font-semibold group-hover:brand-color transition-colors">BMI Calculator</h2>
+              <p class="text-xs text-subtle mt-2 leading-relaxed">Classify weight-to-height categories across WHO clinical bands.</p>
+            </div>
+            <span class="text-[11px] font-mono brand-color mt-5 inline-block">Launch tool →</span>
+          </a>
+
+          <a href="#bmr" class="mesh-border card-surface p-5 rounded-2xl transition-all flex flex-col justify-between group">
+            <div>
+              <h2 class="font-semibold group-hover:brand-color transition-colors">Calorie & BMR</h2>
+              <p class="text-xs text-subtle mt-2 leading-relaxed">Resting basal expenditure & maintenance burn adjusted by lifestyle.</p>
+            </div>
+            <span class="text-[11px] font-mono brand-color mt-5 inline-block">Launch tool →</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Utilities & Math -->
+      <div>
+        <div class="flex items-center gap-2 pb-3 mb-5 border-b border-subtle">
+          <span class="font-mono text-xs font-semibold uppercase tracking-wider brand-color">03 / Utilities & Math</span>
         </div>
         <div class="grid sm:grid-cols-3 gap-4">
-          <a href="#scientific" class="mesh-border bg-base-900 p-5 rounded-2xl transition-all duration-200 flex flex-col justify-between group">
+          <a href="#scientific" class="mesh-border card-surface p-5 rounded-2xl transition-all flex flex-col justify-between group">
             <div>
-              <h2 class="font-semibold text-white group-hover:text-blue-400 transition-colors">Scientific Keypad</h2>
-              <p class="text-xs text-slate-400 mt-2 leading-relaxed">Instant evaluation for brackets, roots, operations, and percentages.</p>
+              <h2 class="font-semibold group-hover:brand-color transition-colors">Scientific Keypad</h2>
+              <p class="text-xs text-subtle mt-2 leading-relaxed">Instant evaluation for brackets, roots, operations, and percentages.</p>
             </div>
-            <span class="text-[11px] font-mono text-blue-400 mt-5 inline-block">Launch tool →</span>
+            <span class="text-[11px] font-mono brand-color mt-5 inline-block">Launch tool →</span>
           </a>
 
-          <a href="#age" class="mesh-border bg-base-900 p-5 rounded-2xl transition-all duration-200 flex flex-col justify-between group">
+          <a href="#age" class="mesh-border card-surface p-5 rounded-2xl transition-all flex flex-col justify-between group">
             <div>
-              <h2 class="font-semibold text-white group-hover:text-blue-400 transition-colors">Age & Interval</h2>
-              <p class="text-xs text-slate-400 mt-2 leading-relaxed">Calculate exact intervals down to elapsed days, hours, and milestones.</p>
+              <h2 class="font-semibold group-hover:brand-color transition-colors">Age & Interval</h2>
+              <p class="text-xs text-subtle mt-2 leading-relaxed">Calculate exact intervals down to elapsed days, hours, and milestones.</p>
             </div>
-            <span class="text-[11px] font-mono text-blue-400 mt-5 inline-block">Launch tool →</span>
+            <span class="text-[11px] font-mono brand-color mt-5 inline-block">Launch tool →</span>
           </a>
 
-          <a href="#currency" class="mesh-border bg-base-900 p-5 rounded-2xl transition-all duration-200 flex flex-col justify-between group">
+          <a href="#currency" class="mesh-border card-surface p-5 rounded-2xl transition-all flex flex-col justify-between group">
             <div>
-              <h2 class="font-semibold text-white group-hover:text-blue-400 transition-colors">Currency Converter</h2>
-              <p class="text-xs text-slate-400 mt-2 leading-relaxed">Fast cross-rate conversion across USD, EUR, GBP, INR, and JPY.</p>
+              <h2 class="font-semibold group-hover:brand-color transition-colors">Currency Converter</h2>
+              <p class="text-xs text-subtle mt-2 leading-relaxed">Live cross-rate conversions across primary global reserve pairs.</p>
             </div>
-            <span class="text-[11px] font-mono text-blue-400 mt-5 inline-block">Launch tool →</span>
+            <span class="text-[11px] font-mono brand-color mt-5 inline-block">Launch tool →</span>
           </a>
         </div>
       </div>
     </section>
 
-    <!-- ================= 1. MORTGAGE ================= -->
+    <!-- ================= 1. MORTGAGE CALCULATOR ================= -->
     <section id="view-mortgage" class="page-view hidden space-y-8">
-      <div class="text-xs font-mono text-slate-500"><a href="#home" class="hover:text-brand-cyan">Hub</a> / Finance / Mortgage</div>
-      <div>
-        <h1 class="font-display text-3xl font-extrabold text-white">Mortgage & Loan Estimator (PITI)</h1>
-        <p class="text-slate-400 text-sm mt-1">Calculate principal, interest, taxes, and homeowners insurance.</p>
+      <div class="text-xs font-mono text-subtle"><a href="#home" class="hover:brand-color">Hub</a> / Finance / Mortgage</div>
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div>
+          <h1 class="font-display text-3xl font-extrabold">Mortgage (PITI) Estimator</h1>
+          <p class="text-subtle text-sm mt-1">Calculate principal, interest, taxes, and insurance.</p>
+        </div>
+        <!-- Currency Selector -->
+        <div class="flex items-center gap-2 card-surface border border-subtle px-3 py-1.5 rounded-xl">
+          <span class="text-xs font-mono text-subtle">Currency:</span>
+          <select id="mort-curr" onchange="calcMortgage()" class="bg-transparent brand-color font-mono text-sm font-semibold outline-none cursor-pointer">
+            <option value="USD" class="card-surface">USD ($)</option>
+            <option value="EUR" class="card-surface">EUR (€)</option>
+            <option value="GBP" class="card-surface">GBP (£)</option>
+            <option value="INR" class="card-surface">INR (₹)</option>
+            <option value="JPY" class="card-surface">JPY (¥)</option>
+            <option value="CAD" class="card-surface">CAD (CA$)</option>
+            <option value="AUD" class="card-surface">AUD (A$)</option>
+          </select>
+        </div>
       </div>
 
-      <div class="bg-base-900 border border-base-border p-6 md:p-8 rounded-3xl max-w-xl">
+      <div class="card-surface border border-subtle p-6 md:p-8 rounded-3xl max-w-xl">
         <div class="space-y-4 mb-6 text-sm">
           <div>
-            <label class="block text-xs font-mono text-slate-400 mb-1.5">Home Price ($)</label>
-            <input type="number" id="mort-price" value="400000" class="w-full px-4 py-2.5 rounded-xl bg-base-950 border border-base-border focus:border-brand-cyan text-white outline-none">
+            <label class="block text-xs font-mono text-subtle mb-1.5">Home Valuation</label>
+            <input type="number" id="mort-price" value="400000" class="w-full px-4 py-2.5 rounded-xl input-surface border outline-none">
           </div>
           <div class="grid grid-cols-2 gap-4">
             <div>
-              <label class="block text-xs font-mono text-slate-400 mb-1.5">Down Payment ($)</label>
-              <input type="number" id="mort-down" value="80000" class="w-full px-4 py-2.5 rounded-xl bg-base-950 border border-base-border focus:border-brand-cyan text-white outline-none">
+              <label class="block text-xs font-mono text-subtle mb-1.5">Down Payment</label>
+              <input type="number" id="mort-down" value="80000" class="w-full px-4 py-2.5 rounded-xl input-surface border outline-none">
             </div>
             <div>
-              <label class="block text-xs font-mono text-slate-400 mb-1.5">Interest Rate (%)</label>
-              <input type="number" id="mort-rate" step="0.1" value="6.5" class="w-full px-4 py-2.5 rounded-xl bg-base-950 border border-base-border focus:border-brand-cyan text-white outline-none">
+              <label class="block text-xs font-mono text-subtle mb-1.5">Interest Rate (%)</label>
+              <input type="number" id="mort-rate" step="0.1" value="6.5" class="w-full px-4 py-2.5 rounded-xl input-surface border outline-none">
             </div>
           </div>
           <div class="grid grid-cols-2 gap-4">
             <div>
-              <label class="block text-xs font-mono text-slate-400 mb-1.5">Loan Term (Years)</label>
-              <input type="number" id="mort-years" value="30" class="w-full px-4 py-2.5 rounded-xl bg-base-950 border border-base-border focus:border-brand-cyan text-white outline-none">
+              <label class="block text-xs font-mono text-subtle mb-1.5">Loan Term (Years)</label>
+              <input type="number" id="mort-years" value="30" class="w-full px-4 py-2.5 rounded-xl input-surface border outline-none">
             </div>
             <div>
-              <label class="block text-xs font-mono text-slate-400 mb-1.5">Annual Tax & Ins ($)</label>
-              <input type="number" id="mort-tax" value="4800" class="w-full px-4 py-2.5 rounded-xl bg-base-950 border border-base-border focus:border-brand-cyan text-white outline-none">
+              <label class="block text-xs font-mono text-subtle mb-1.5">Annual Tax & Ins</label>
+              <input type="number" id="mort-tax" value="4800" class="w-full px-4 py-2.5 rounded-xl input-surface border outline-none">
             </div>
           </div>
         </div>
 
-        <button onclick="calcMortgage()" class="w-full py-3 rounded-xl font-semibold text-sm bg-gradient-to-r from-brand-cyan to-brand-accent hover:opacity-90 transition text-black">Compute Total Payment</button>
+        <button onclick="calcMortgage()" class="w-full py-3 rounded-xl font-semibold text-sm brand-btn transition">Compute Payment</button>
 
-        <div class="mt-6 p-5 rounded-2xl bg-base-950 border border-base-border text-center">
-          <span class="text-xs font-mono uppercase text-slate-500">Estimated Monthly Payment (PITI)</span>
-          <p id="mort-out" class="font-mono text-3xl font-bold text-white mt-1">$2,422.56</p>
+        <div class="mt-6 p-5 rounded-2xl input-surface border text-center">
+          <span class="text-xs font-mono uppercase text-subtle">Estimated Monthly Payment (PITI)</span>
+          <p id="mort-out" class="font-mono text-3xl font-bold mt-1">$2,422.56</p>
         </div>
       </div>
 
-      <aside class="border-t border-base-border pt-8 max-w-xl">
-        <h3 class="text-xs font-mono uppercase text-slate-500 mb-3">Related Calculators</h3>
+      <aside class="border-t border-subtle pt-8 max-w-xl">
+        <h3 class="text-xs font-mono uppercase text-subtle mb-3">Related Calculators</h3>
         <div class="grid grid-cols-2 gap-3">
-          <a href="#loan" class="p-4 bg-base-900 border border-base-border hover:border-brand-cyan rounded-xl block text-xs">
-            <span class="font-medium text-white block">General Loan Engine</span>
-            <span class="text-slate-500 mt-1 block">Check amortization table →</span>
+          <a href="#loan" class="p-4 card-surface border border-subtle hover:border-cyan-400 rounded-xl block text-xs">
+            <span class="font-medium block">General Loan Engine</span>
+            <span class="text-subtle mt-1 block">Check amortization table →</span>
           </a>
-          <a href="#compound" class="p-4 bg-base-900 border border-base-border hover:border-brand-cyan rounded-xl block text-xs">
-            <span class="font-medium text-white block">Compound Interest</span>
-            <span class="text-slate-500 mt-1 block">Simulate down-payment savings →</span>
+          <a href="#compound" class="p-4 card-surface border border-subtle hover:border-cyan-400 rounded-xl block text-xs">
+            <span class="font-medium block">Compound Interest</span>
+            <span class="text-subtle mt-1 block">Simulate down-payment savings →</span>
           </a>
         </div>
       </aside>
@@ -261,54 +315,68 @@
 
     <!-- ================= 2. LOAN CALCULATOR ================= -->
     <section id="view-loan" class="page-view hidden space-y-8">
-      <div class="text-xs font-mono text-slate-500"><a href="#home" class="hover:text-brand-cyan">Hub</a> / Finance / Loan</div>
-      <div>
-        <h1 class="font-display text-3xl font-extrabold text-white">General Loan Calculator</h1>
-        <p class="text-slate-400 text-sm mt-1">Estimate personal, auto, or student debt payment plans.</p>
+      <div class="text-xs font-mono text-subtle"><a href="#home" class="hover:brand-color">Hub</a> / Finance / Loan</div>
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div>
+          <h1 class="font-display text-3xl font-extrabold">Loan & Amortization</h1>
+          <p class="text-subtle text-sm mt-1">Model personal, auto, or student debt payment schedules.</p>
+        </div>
+        <div class="flex items-center gap-2 card-surface border border-subtle px-3 py-1.5 rounded-xl">
+          <span class="text-xs font-mono text-subtle">Currency:</span>
+          <select id="loan-curr" onchange="calcLoan()" class="bg-transparent brand-color font-mono text-sm font-semibold outline-none cursor-pointer">
+            <option value="USD" class="card-surface">USD ($)</option>
+            <option value="EUR" class="card-surface">EUR (€)</option>
+            <option value="GBP" class="card-surface">GBP (£)</option>
+            <option value="INR" class="card-surface">INR (₹)</option>
+            <option value="JPY" class="card-surface">JPY (¥)</option>
+            <option value="CAD" class="card-surface">CAD (CA$)</option>
+            <option value="AUD" class="card-surface">AUD (A$)</option>
+          </select>
+        </div>
       </div>
 
-      <div class="bg-base-900 border border-base-border p-6 md:p-8 rounded-3xl max-w-xl">
+      <div class="card-surface border border-subtle p-6 md:p-8 rounded-3xl max-w-xl">
         <div class="space-y-4 mb-6 text-sm">
           <div>
-            <label class="block text-xs font-mono text-slate-400 mb-1.5">Loan Amount ($)</label>
-            <input type="number" id="loan-amount" value="25000" class="w-full px-4 py-2.5 rounded-xl bg-base-950 border border-base-border focus:border-brand-cyan text-white outline-none">
+            <label class="block text-xs font-mono text-subtle mb-1.5">Loan Principal</label>
+            <input type="number" id="loan-amount" value="25000" class="w-full px-4 py-2.5 rounded-xl input-surface border outline-none">
           </div>
           <div class="grid grid-cols-2 gap-4">
             <div>
-              <label class="block text-xs font-mono text-slate-400 mb-1.5">Interest Rate (%)</label>
-              <input type="number" id="loan-rate" step="0.1" value="7.5" class="w-full px-4 py-2.5 rounded-xl bg-base-950 border border-base-border focus:border-brand-cyan text-white outline-none">
+              <label class="block text-xs font-mono text-subtle mb-1.5">Interest Rate (%)</label>
+              <input type="number" id="loan-rate" step="0.1" value="7.5" class="w-full px-4 py-2.5 rounded-xl input-surface border outline-none">
             </div>
             <div>
-              <label class="block text-xs font-mono text-slate-400 mb-1.5">Term (Months)</label>
-              <input type="number" id="loan-months" value="60" class="w-full px-4 py-2.5 rounded-xl bg-base-950 border border-base-border focus:border-brand-cyan text-white outline-none">
+              <label class="block text-xs font-mono text-subtle mb-1.5">Term (Months)</label>
+              <input type="number" id="loan-months" value="60" class="w-full px-4 py-2.5 rounded-xl input-surface border outline-none">
             </div>
           </div>
         </div>
 
-        <button onclick="calcLoan()" class="w-full py-3 rounded-xl font-semibold text-sm bg-gradient-to-r from-brand-cyan to-brand-accent hover:opacity-90 transition text-black">Calculate Amortization</button>
+        <button onclick="calcLoan()" class="w-full py-3 rounded-xl font-semibold text-sm brand-btn transition">Calculate Amortization</button>
 
         <div class="grid grid-cols-2 gap-3 mt-6">
-          <div class="p-4 rounded-2xl bg-base-950 border border-base-border text-center">
-            <span class="text-xs font-mono text-slate-500">Monthly Payment</span>
-            <p id="loan-monthly" class="font-mono text-2xl font-bold text-white mt-1">$500.95</p>
+          <div class="p-4 rounded-2xl input-surface border text-center">
+            <span class="text-xs font-mono text-subtle">Monthly Payment</span>
+            <p id="loan-monthly" class="font-mono text-2xl font-bold mt-1">$500.95</p>
           </div>
-          <div class="p-4 rounded-2xl bg-base-950 border border-base-border text-center">
-            <span class="text-xs font-mono text-slate-500">Total Interest</span>
-            <p id="loan-interest" class="font-mono text-2xl font-bold text-white mt-1">$5,057.00</p>
+          <div class="p-4 rounded-2xl input-surface border text-center">
+            <span class="text-xs font-mono text-subtle">Total Interest</span>
+            <p id="loan-interest" class="font-mono text-2xl font-bold mt-1">$5,057.00</p>
           </div>
         </div>
       </div>
 
-      <aside class="border-t border-base-border pt-8 max-w-xl">
-        <h3 class="text-xs font-mono uppercase text-slate-500 mb-3">Related Calculators</h3>
+      <aside class="border-t border-subtle pt-8 max-w-xl">
+        <h3 class="text-xs font-mono uppercase text-subtle mb-3">Related Calculators</h3>
         <div class="grid grid-cols-2 gap-3">
-          <a href="#salary" class="p-4 bg-base-900 border border-base-border hover:border-brand-cyan rounded-xl block text-xs">
-            <span class="font-medium text-white block">Salary Take-Home</span>
-            <span class="text-slate-500 mt-1 block">Check monthly budget →</span>
+          <a href="#salary" class="p-4 card-surface border border-subtle hover:border-cyan-400 rounded-xl block text-xs">
+            <span class="font-medium block">Salary Take-Home</span>
+            <span class="text-subtle mt-1 block">Check monthly budget →</span>
           </a>
-          <a href="#mortgage" class="p-4 bg-base-900 border border-base-border hover:border-brand-cyan rounded-xl block text-xs">
-            <span class="font-medium text-white block">Mortgage Calculator</span>
-            <span class="text-slate-500 mt-1 block">Analyze home loans →</span>
+          <a href="#mortgage" class="p-4 card-surface border border-subtle hover:border-cyan-400 rounded-xl block text-xs">
+            <span class="font-medium block">Mortgage Calculator</span>
+            <span class="text-subtle mt-1 block">Analyze real estate loans →</span>
           </a>
         </div>
       </aside>
@@ -316,52 +384,66 @@
 
     <!-- ================= 3. COMPOUND INTEREST ================= -->
     <section id="view-compound" class="page-view hidden space-y-8">
-      <div class="text-xs font-mono text-slate-500"><a href="#home" class="hover:text-brand-cyan">Hub</a> / Finance / Compound</div>
-      <div>
-        <h1 class="font-display text-3xl font-extrabold text-white">Compound Interest Estimator</h1>
-        <p class="text-slate-400 text-sm mt-1">Project long-term portfolio growth with periodic additions.</p>
+      <div class="text-xs font-mono text-subtle"><a href="#home" class="hover:brand-color">Hub</a> / Finance / Compound</div>
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div>
+          <h1 class="font-display text-3xl font-extrabold">Compound Interest Growth</h1>
+          <p class="text-subtle text-sm mt-1">Project long-term wealth accumulation with periodic deposits.</p>
+        </div>
+        <div class="flex items-center gap-2 card-surface border border-subtle px-3 py-1.5 rounded-xl">
+          <span class="text-xs font-mono text-subtle">Currency:</span>
+          <select id="comp-curr" onchange="calcCompound()" class="bg-transparent brand-color font-mono text-sm font-semibold outline-none cursor-pointer">
+            <option value="USD" class="card-surface">USD ($)</option>
+            <option value="EUR" class="card-surface">EUR (€)</option>
+            <option value="GBP" class="card-surface">GBP (£)</option>
+            <option value="INR" class="card-surface">INR (₹)</option>
+            <option value="JPY" class="card-surface">JPY (¥)</option>
+            <option value="CAD" class="card-surface">CAD (CA$)</option>
+            <option value="AUD" class="card-surface">AUD (A$)</option>
+          </select>
+        </div>
       </div>
 
-      <div class="bg-base-900 border border-base-border p-6 md:p-8 rounded-3xl max-w-xl">
+      <div class="card-surface border border-subtle p-6 md:p-8 rounded-3xl max-w-xl">
         <div class="grid grid-cols-2 gap-4 mb-4 text-sm">
           <div>
-            <label class="block text-xs font-mono text-slate-400 mb-1.5">Initial Principal ($)</label>
-            <input type="number" id="comp-init" value="10000" class="w-full px-4 py-2.5 rounded-xl bg-base-950 border border-base-border focus:border-brand-cyan text-white outline-none">
+            <label class="block text-xs font-mono text-subtle mb-1.5">Initial Principal</label>
+            <input type="number" id="comp-init" value="10000" class="w-full px-4 py-2.5 rounded-xl input-surface border outline-none">
           </div>
           <div>
-            <label class="block text-xs font-mono text-slate-400 mb-1.5">Monthly Addition ($)</label>
-            <input type="number" id="comp-monthly" value="500" class="w-full px-4 py-2.5 rounded-xl bg-base-950 border border-base-border focus:border-brand-cyan text-white outline-none">
+            <label class="block text-xs font-mono text-subtle mb-1.5">Monthly Addition</label>
+            <input type="number" id="comp-monthly" value="500" class="w-full px-4 py-2.5 rounded-xl input-surface border outline-none">
           </div>
         </div>
         <div class="grid grid-cols-2 gap-4 mb-6 text-sm">
           <div>
-            <label class="block text-xs font-mono text-slate-400 mb-1.5">Annual Return (%)</label>
-            <input type="number" id="comp-rate" step="0.1" value="8.0" class="w-full px-4 py-2.5 rounded-xl bg-base-950 border border-base-border focus:border-brand-cyan text-white outline-none">
+            <label class="block text-xs font-mono text-subtle mb-1.5">Annual Return (%)</label>
+            <input type="number" id="comp-rate" step="0.1" value="8.0" class="w-full px-4 py-2.5 rounded-xl input-surface border outline-none">
           </div>
           <div>
-            <label class="block text-xs font-mono text-slate-400 mb-1.5">Years Horizon</label>
-            <input type="number" id="comp-years" value="20" class="w-full px-4 py-2.5 rounded-xl bg-base-950 border border-base-border focus:border-brand-cyan text-white outline-none">
+            <label class="block text-xs font-mono text-subtle mb-1.5">Years Horizon</label>
+            <input type="number" id="comp-years" value="20" class="w-full px-4 py-2.5 rounded-xl input-surface border outline-none">
           </div>
         </div>
 
-        <button onclick="calcCompound()" class="w-full py-3 rounded-xl font-semibold text-sm bg-gradient-to-r from-brand-cyan to-brand-accent hover:opacity-90 transition text-black">Compute Future Wealth</button>
+        <button onclick="calcCompound()" class="w-full py-3 rounded-xl font-semibold text-sm brand-btn transition">Compute Future Wealth</button>
 
-        <div class="mt-6 p-5 rounded-2xl bg-base-950 border border-base-border text-center">
-          <span class="text-xs font-mono uppercase text-slate-500">Projected Ending Balance</span>
-          <p id="comp-out" class="font-mono text-3xl font-bold text-white mt-1">$341,908.68</p>
+        <div class="mt-6 p-5 rounded-2xl input-surface border text-center">
+          <span class="text-xs font-mono uppercase text-subtle">Projected Ending Balance</span>
+          <p id="comp-out" class="font-mono text-3xl font-bold mt-1">$341,908.68</p>
         </div>
       </div>
 
-      <aside class="border-t border-base-border pt-8 max-w-xl">
-        <h3 class="text-xs font-mono uppercase text-slate-500 mb-3">Related Calculators</h3>
+      <aside class="border-t border-subtle pt-8 max-w-xl">
+        <h3 class="text-xs font-mono uppercase text-subtle mb-3">Related Calculators</h3>
         <div class="grid grid-cols-2 gap-3">
-          <a href="#mortgage" class="p-4 bg-base-900 border border-base-border hover:border-brand-cyan rounded-xl block text-xs">
-            <span class="font-medium text-white block">Mortgage Estimator</span>
-            <span class="text-slate-500 mt-1 block">Compare equity vs market →</span>
+          <a href="#mortgage" class="p-4 card-surface border border-subtle hover:border-cyan-400 rounded-xl block text-xs">
+            <span class="font-medium block">Mortgage Estimator</span>
+            <span class="text-subtle mt-1 block">Compare equity vs investments →</span>
           </a>
-          <a href="#salary" class="p-4 bg-base-900 border border-base-border hover:border-brand-cyan rounded-xl block text-xs">
-            <span class="font-medium text-white block">Salary Estimator</span>
-            <span class="text-slate-500 mt-1 block">Find savings rate →</span>
+          <a href="#salary" class="p-4 card-surface border border-subtle hover:border-cyan-400 rounded-xl block text-xs">
+            <span class="font-medium block">Salary Estimator</span>
+            <span class="text-subtle mt-1 block">Find savings rate →</span>
           </a>
         </div>
       </aside>
@@ -369,48 +451,62 @@
 
     <!-- ================= 4. SALARY / PAYCHECK ================= -->
     <section id="view-salary" class="page-view hidden space-y-8">
-      <div class="text-xs font-mono text-slate-500"><a href="#home" class="hover:text-brand-cyan">Hub</a> / Finance / Salary</div>
-      <div>
-        <h1 class="font-display text-3xl font-extrabold text-white">Salary & Take-Home Calculator</h1>
-        <p class="text-slate-400 text-sm mt-1">Estimate net pay after standard aggregate withholdings.</p>
+      <div class="text-xs font-mono text-subtle"><a href="#home" class="hover:brand-color">Hub</a> / Finance / Salary</div>
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div>
+          <h1 class="font-display text-3xl font-extrabold">Salary & Paycheck Calculator</h1>
+          <p class="text-subtle text-sm mt-1">Estimate net take-home earnings across common pay frequencies.</p>
+        </div>
+        <div class="flex items-center gap-2 card-surface border border-subtle px-3 py-1.5 rounded-xl">
+          <span class="text-xs font-mono text-subtle">Currency:</span>
+          <select id="sal-curr" onchange="calcSalary()" class="bg-transparent brand-color font-mono text-sm font-semibold outline-none cursor-pointer">
+            <option value="USD" class="card-surface">USD ($)</option>
+            <option value="EUR" class="card-surface">EUR (€)</option>
+            <option value="GBP" class="card-surface">GBP (£)</option>
+            <option value="INR" class="card-surface">INR (₹)</option>
+            <option value="JPY" class="card-surface">JPY (¥)</option>
+            <option value="CAD" class="card-surface">CAD (CA$)</option>
+            <option value="AUD" class="card-surface">AUD (A$)</option>
+          </select>
+        </div>
       </div>
 
-      <div class="bg-base-900 border border-base-border p-6 md:p-8 rounded-3xl max-w-xl">
+      <div class="card-surface border border-subtle p-6 md:p-8 rounded-3xl max-w-xl">
         <div class="space-y-4 mb-6 text-sm">
           <div>
-            <label class="block text-xs font-mono text-slate-400 mb-1.5">Gross Annual Salary ($)</label>
-            <input type="number" id="sal-amount" value="85000" class="w-full px-4 py-2.5 rounded-xl bg-base-950 border border-base-border focus:border-brand-cyan text-white outline-none">
+            <label class="block text-xs font-mono text-subtle mb-1.5">Gross Annual Compensation</label>
+            <input type="number" id="sal-amount" value="85000" class="w-full px-4 py-2.5 rounded-xl input-surface border outline-none">
           </div>
           <div>
-            <label class="block text-xs font-mono text-slate-400 mb-1.5">Total Deductions & Taxes (%)</label>
-            <input type="number" id="sal-deduct" value="25" class="w-full px-4 py-2.5 rounded-xl bg-base-950 border border-base-border focus:border-brand-cyan text-white outline-none">
+            <label class="block text-xs font-mono text-subtle mb-1.5">Estimated Blended Tax & Deductions (%)</label>
+            <input type="number" id="sal-deduct" value="25" class="w-full px-4 py-2.5 rounded-xl input-surface border outline-none">
           </div>
         </div>
 
-        <button onclick="calcSalary()" class="w-full py-3 rounded-xl font-semibold text-sm bg-gradient-to-r from-brand-cyan to-brand-accent hover:opacity-90 transition text-black">Compute Net Income</button>
+        <button onclick="calcSalary()" class="w-full py-3 rounded-xl font-semibold text-sm brand-btn transition">Compute Take-Home</button>
 
         <div class="grid grid-cols-2 gap-3 mt-6">
-          <div class="p-4 rounded-2xl bg-base-950 border border-base-border text-center">
-            <span class="text-xs font-mono text-slate-500">Monthly Net</span>
-            <p id="sal-month" class="font-mono text-2xl font-bold text-white mt-1">$5,312.50</p>
+          <div class="p-4 rounded-2xl input-surface border text-center">
+            <span class="text-xs font-mono text-subtle">Monthly Net</span>
+            <p id="sal-month" class="font-mono text-2xl font-bold mt-1">$5,312.50</p>
           </div>
-          <div class="p-4 rounded-2xl bg-base-950 border border-base-border text-center">
-            <span class="text-xs font-mono text-slate-500">Bi-Weekly Paycheck</span>
-            <p id="sal-biweek" class="font-mono text-2xl font-bold text-white mt-1">$2,451.92</p>
+          <div class="p-4 rounded-2xl input-surface border text-center">
+            <span class="text-xs font-mono text-subtle">Bi-Weekly Paycheck</span>
+            <p id="sal-biweek" class="font-mono text-2xl font-bold mt-1">$2,451.92</p>
           </div>
         </div>
       </div>
 
-      <aside class="border-t border-base-border pt-8 max-w-xl">
-        <h3 class="text-xs font-mono uppercase text-slate-500 mb-3">Related Calculators</h3>
+      <aside class="border-t border-subtle pt-8 max-w-xl">
+        <h3 class="text-xs font-mono uppercase text-subtle mb-3">Related Calculators</h3>
         <div class="grid grid-cols-2 gap-3">
-          <a href="#compound" class="p-4 bg-base-900 border border-base-border hover:border-brand-cyan rounded-xl block text-xs">
-            <span class="font-medium text-white block">Compound Interest</span>
-            <span class="text-slate-500 mt-1 block">Plan monthly additions →</span>
+          <a href="#compound" class="p-4 card-surface border border-subtle hover:border-cyan-400 rounded-xl block text-xs">
+            <span class="font-medium block">Compound Interest</span>
+            <span class="text-subtle mt-1 block">Plan monthly investment →</span>
           </a>
-          <a href="#loan" class="p-4 bg-base-900 border border-base-border hover:border-brand-cyan rounded-xl block text-xs">
-            <span class="font-medium text-white block">Loan Calculator</span>
-            <span class="text-slate-500 mt-1 block">Check debt-to-income limits →</span>
+          <a href="#loan" class="p-4 card-surface border border-subtle hover:border-cyan-400 rounded-xl block text-xs">
+            <span class="font-medium block">Loan Calculator</span>
+            <span class="text-subtle mt-1 block">Check debt-to-income limits →</span>
           </a>
         </div>
       </aside>
@@ -418,42 +514,42 @@
 
     <!-- ================= 5. BMI CALCULATOR ================= -->
     <section id="view-bmi" class="page-view hidden space-y-8">
-      <div class="text-xs font-mono text-slate-500"><a href="#home" class="hover:text-brand-violet">Hub</a> / Health / BMI</div>
+      <div class="text-xs font-mono text-subtle"><a href="#home" class="hover:brand-color">Hub</a> / Health / BMI</div>
       <div>
-        <h1 class="font-display text-3xl font-extrabold text-white">Body Mass Index (BMI)</h1>
-        <p class="text-slate-400 text-sm mt-1">Screening metric to evaluate body weight categories.</p>
+        <h1 class="font-display text-3xl font-extrabold">Body Mass Index (BMI)</h1>
+        <p class="text-subtle text-sm mt-1">Screening metric to evaluate body weight categories against clinical bands.</p>
       </div>
 
-      <div class="bg-base-900 border border-base-border p-6 md:p-8 rounded-3xl max-w-xl">
+      <div class="card-surface border border-subtle p-6 md:p-8 rounded-3xl max-w-xl">
         <div class="grid grid-cols-2 gap-4 mb-6 text-sm">
           <div>
-            <label class="block text-xs font-mono text-slate-400 mb-1.5">Height (cm)</label>
-            <input type="number" id="bmi-h" value="178" class="w-full px-4 py-2.5 rounded-xl bg-base-950 border border-base-border focus:border-brand-violet text-white outline-none">
+            <label class="block text-xs font-mono text-subtle mb-1.5">Height (cm)</label>
+            <input type="number" id="bmi-h" value="178" class="w-full px-4 py-2.5 rounded-xl input-surface border outline-none">
           </div>
           <div>
-            <label class="block text-xs font-mono text-slate-400 mb-1.5">Weight (kg)</label>
-            <input type="number" id="bmi-w" value="72" class="w-full px-4 py-2.5 rounded-xl bg-base-950 border border-base-border focus:border-brand-violet text-white outline-none">
+            <label class="block text-xs font-mono text-subtle mb-1.5">Weight (kg)</label>
+            <input type="number" id="bmi-w" value="72" class="w-full px-4 py-2.5 rounded-xl input-surface border outline-none">
           </div>
         </div>
 
-        <button onclick="calcBMI()" class="w-full py-3 rounded-xl font-semibold text-sm bg-gradient-to-r from-brand-violet to-purple-400 hover:opacity-90 transition text-white">Compute Index Score</button>
+        <button onclick="calcBMI()" class="w-full py-3 rounded-xl font-semibold text-sm brand-btn transition">Compute Index Score</button>
 
-        <div class="mt-6 p-5 rounded-2xl bg-base-950 border border-base-border text-center">
-          <span class="text-xs font-mono uppercase text-slate-500">Calculated Score</span>
-          <p id="bmi-out" class="font-mono text-3xl font-bold text-white mt-1">22.7 <span class="text-sm font-sans font-normal text-emerald-400">(Normal)</span></p>
+        <div class="mt-6 p-5 rounded-2xl input-surface border text-center">
+          <span class="text-xs font-mono uppercase text-subtle">Calculated Score</span>
+          <p id="bmi-out" class="font-mono text-3xl font-bold mt-1">22.7 <span class="text-sm font-sans font-normal text-emerald-400">(Normal)</span></p>
         </div>
       </div>
 
-      <aside class="border-t border-base-border pt-8 max-w-xl">
-        <h3 class="text-xs font-mono uppercase text-slate-500 mb-3">Related Calculators</h3>
+      <aside class="border-t border-subtle pt-8 max-w-xl">
+        <h3 class="text-xs font-mono uppercase text-subtle mb-3">Related Calculators</h3>
         <div class="grid grid-cols-2 gap-3">
-          <a href="#bmr" class="p-4 bg-base-900 border border-base-border hover:border-brand-violet rounded-xl block text-xs">
-            <span class="font-medium text-white block">Calorie & BMR</span>
-            <span class="text-slate-500 mt-1 block">Calculate daily maintenance calories →</span>
+          <a href="#bmr" class="p-4 card-surface border border-subtle hover:border-cyan-400 rounded-xl block text-xs">
+            <span class="font-medium block">Calorie & BMR</span>
+            <span class="text-subtle mt-1 block">Calculate daily maintenance calories →</span>
           </a>
-          <a href="#age" class="p-4 bg-base-900 border border-base-border hover:border-brand-violet rounded-xl block text-xs">
-            <span class="font-medium text-white block">Age Calculator</span>
-            <span class="text-slate-500 mt-1 block">Check exact age interval →</span>
+          <a href="#age" class="p-4 card-surface border border-subtle hover:border-cyan-400 rounded-xl block text-xs">
+            <span class="font-medium block">Age Calculator</span>
+            <span class="text-subtle mt-1 block">Check exact chronological age →</span>
           </a>
         </div>
       </aside>
@@ -461,253 +557,219 @@
 
     <!-- ================= 6. CALORIE & BMR ================= -->
     <section id="view-bmr" class="page-view hidden space-y-8">
-      <div class="text-xs font-mono text-slate-500"><a href="#home" class="hover:text-brand-violet">Hub</a> / Health / BMR</div>
+      <div class="text-xs font-mono text-subtle"><a href="#home" class="hover:brand-color">Hub</a> / Health / BMR</div>
       <div>
-        <h1 class="font-display text-3xl font-extrabold text-white">Calorie & BMR Calculator</h1>
-        <p class="text-slate-400 text-sm mt-1">Resting metabolic rate via the Mifflin-St Jeor formula.</p>
+        <h1 class="font-display text-3xl font-extrabold">Calorie & BMR Estimator</h1>
+        <p class="text-subtle text-sm mt-1">Mifflin-St Jeor daily basal expenditure adjusted by physical activity.</p>
       </div>
 
-      <div class="bg-base-900 border border-base-border p-6 md:p-8 rounded-3xl max-w-xl">
+      <div class="card-surface border border-subtle p-6 md:p-8 rounded-3xl max-w-xl">
         <div class="grid grid-cols-3 gap-3 mb-4 text-sm">
           <div>
-            <label class="block text-xs font-mono text-slate-400 mb-1.5">Age</label>
-            <input type="number" id="bmr-a" value="26" class="w-full px-4 py-2.5 rounded-xl bg-base-950 border border-base-border focus:border-brand-violet text-white outline-none">
+            <label class="block text-xs font-mono text-subtle mb-1.5">Age</label>
+            <input type="number" id="bmr-a" value="26" class="w-full px-4 py-2.5 rounded-xl input-surface border outline-none">
           </div>
           <div>
-            <label class="block text-xs font-mono text-slate-400 mb-1.5">Sex</label>
-            <select id="bmr-s" class="w-full px-4 py-2.5 rounded-xl bg-base-950 border border-base-border focus:border-brand-violet text-white outline-none">
+            <label class="block text-xs font-mono text-subtle mb-1.5">Sex</label>
+            <select id="bmr-s" class="w-full px-4 py-2.5 rounded-xl input-surface border outline-none">
               <option value="m">Male</option>
               <option value="f">Female</option>
             </select>
           </div>
           <div>
-            <label class="block text-xs font-mono text-slate-400 mb-1.5">Weight (kg)</label>
-            <input type="number" id="bmr-w" value="74" class="w-full px-4 py-2.5 rounded-xl bg-base-950 border border-base-border focus:border-brand-violet text-white outline-none">
+            <label class="block text-xs font-mono text-subtle mb-1.5">Weight (kg)</label>
+            <input type="number" id="bmr-w" value="74" class="w-full px-4 py-2.5 rounded-xl input-surface border outline-none">
           </div>
         </div>
         <div class="mb-6 text-sm">
-          <label class="block text-xs font-mono text-slate-400 mb-1.5">Height (cm)</label>
-          <input type="number" id="bmr-h" value="180" class="w-full px-4 py-2.5 rounded-xl bg-base-950 border border-base-border focus:border-brand-violet text-white outline-none">
+          <label class="block text-xs font-mono text-subtle mb-1.5">Height (cm)</label>
+          <input type="number" id="bmr-h" value="180" class="w-full px-4 py-2.5 rounded-xl input-surface border outline-none">
         </div>
 
-        <button onclick="calcBMR()" class="w-full py-3 rounded-xl font-semibold text-sm bg-gradient-to-r from-brand-violet to-purple-400 hover:opacity-90 transition text-white">Compute Caloric Expenditure</button>
+        <button onclick="calcBMR()" class="w-full py-3 rounded-xl font-semibold text-sm brand-btn transition">Compute Caloric Expenditure</button>
 
         <div class="grid grid-cols-2 gap-3 mt-6">
-          <div class="p-4 rounded-2xl bg-base-950 border border-base-border text-center">
-            <span class="text-xs font-mono text-slate-500">Basal (BMR)</span>
-            <p id="bmr-out-base" class="font-mono text-2xl font-bold text-white mt-1">1,735 kcal</p>
+          <div class="p-4 rounded-2xl input-surface border text-center">
+            <span class="text-xs font-mono text-subtle">Basal (BMR)</span>
+            <p id="bmr-out-base" class="font-mono text-2xl font-bold mt-1">1,735 kcal</p>
           </div>
-          <div class="p-4 rounded-2xl bg-base-950 border border-base-border text-center">
-            <span class="text-xs font-mono text-slate-500">Active (TDEE)</span>
-            <p id="bmr-out-tdee" class="font-mono text-2xl font-bold text-white mt-1">2,385 kcal</p>
+          <div class="p-4 rounded-2xl input-surface border text-center">
+            <span class="text-xs font-mono text-subtle">Active (TDEE)</span>
+            <p id="bmr-out-tdee" class="font-mono text-2xl font-bold mt-1">2,385 kcal</p>
           </div>
         </div>
       </div>
 
-      <aside class="border-t border-base-border pt-8 max-w-xl">
-        <h3 class="text-xs font-mono uppercase text-slate-500 mb-3">Related Calculators</h3>
+      <aside class="border-t border-subtle pt-8 max-w-xl">
+        <h3 class="text-xs font-mono uppercase text-subtle mb-3">Related Calculators</h3>
         <div class="grid grid-cols-2 gap-3">
-          <a href="#bmi" class="p-4 bg-base-900 border border-base-border hover:border-brand-violet rounded-xl block text-xs">
-            <span class="font-medium text-white block">BMI Calculator</span>
-            <span class="text-slate-500 mt-1 block">Check weight thresholds →</span>
+          <a href="#bmi" class="p-4 card-surface border border-subtle hover:border-cyan-400 rounded-xl block text-xs">
+            <span class="font-medium block">BMI Calculator</span>
+            <span class="text-subtle mt-1 block">Check weight thresholds →</span>
           </a>
-          <a href="#pregnancy" class="p-4 bg-base-900 border border-base-border hover:border-brand-violet rounded-xl block text-xs">
-            <span class="font-medium text-white block">Pregnancy Due Date</span>
-            <span class="text-slate-500 mt-1 block">Track trimester weeks →</span>
+          <a href="#age" class="p-4 card-surface border border-subtle hover:border-cyan-400 rounded-xl block text-xs">
+            <span class="font-medium block">Age Calculator</span>
+            <span class="text-subtle mt-1 block">Exact chronological age metrics →</span>
           </a>
         </div>
       </aside>
     </section>
 
-    <!-- ================= 7. PREGNANCY / DUE DATE ================= -->
-    <section id="view-pregnancy" class="page-view hidden space-y-8">
-      <div class="text-xs font-mono text-slate-500"><a href="#home" class="hover:text-brand-violet">Hub</a> / Health / Pregnancy</div>
-      <div>
-        <h1 class="font-display text-3xl font-extrabold text-white">Pregnancy Due Date Calculator</h1>
-        <p class="text-slate-400 text-sm mt-1">Estimated delivery date using Naegele's rule based on LMP.</p>
-      </div>
-
-      <div class="bg-base-900 border border-base-border p-6 md:p-8 rounded-3xl max-w-xl">
-        <div class="mb-6 text-sm">
-          <label class="block text-xs font-mono text-slate-400 mb-1.5">First Day of Last Menstrual Period</label>
-          <input type="date" id="preg-date" class="w-full px-4 py-2.5 rounded-xl bg-base-950 border border-base-border focus:border-brand-violet text-white outline-none">
-        </div>
-
-        <button onclick="calcPregnancy()" class="w-full py-3 rounded-xl font-semibold text-sm bg-gradient-to-r from-brand-violet to-purple-400 hover:opacity-90 transition text-white">Calculate Timeline</button>
-
-        <div class="mt-6 p-5 rounded-2xl bg-base-950 border border-base-border text-center">
-          <span class="text-xs font-mono uppercase text-slate-500">Estimated Delivery Date</span>
-          <p id="preg-due" class="font-mono text-2xl font-bold text-white mt-1">Select date</p>
-          <p id="preg-weeks" class="text-xs font-mono text-slate-400 mt-1">Status: -</p>
-        </div>
-      </div>
-
-      <aside class="border-t border-base-border pt-8 max-w-xl">
-        <h3 class="text-xs font-mono uppercase text-slate-500 mb-3">Related Calculators</h3>
-        <div class="grid grid-cols-2 gap-3">
-          <a href="#bmr" class="p-4 bg-base-900 border border-base-border hover:border-brand-violet rounded-xl block text-xs">
-            <span class="font-medium text-white block">Calorie & BMR</span>
-            <span class="text-slate-500 mt-1 block">Adjust nutritional intake →</span>
-          </a>
-          <a href="#age" class="p-4 bg-base-900 border border-base-border hover:border-brand-violet rounded-xl block text-xs">
-            <span class="font-medium text-white block">Age & Interval</span>
-            <span class="text-slate-500 mt-1 block">Date arithmetic →</span>
-          </a>
-        </div>
-      </aside>
-    </section>
-
-    <!-- ================= 8. SCIENTIFIC KEYPAD ================= -->
+    <!-- ================= 7. SCIENTIFIC KEYPAD ================= -->
     <section id="view-scientific" class="page-view hidden space-y-8">
-      <div class="text-xs font-mono text-slate-500"><a href="#home" class="hover:text-blue-400">Hub</a> / Utilities / Scientific</div>
+      <div class="text-xs font-mono text-subtle"><a href="#home" class="hover:brand-color">Hub</a> / Utilities / Scientific</div>
       <div>
-        <h1 class="font-display text-3xl font-extrabold text-white">Scientific Keypad</h1>
-        <p class="text-slate-400 text-sm mt-1">Interactive keypad for rapid arithmetic, powers, and roots.</p>
+        <h1 class="font-display text-3xl font-extrabold">Scientific Keypad</h1>
+        <p class="text-subtle text-sm mt-1">Interactive keypad for rapid arithmetic, powers, and roots.</p>
       </div>
 
-      <div class="bg-base-900 border border-base-border p-6 rounded-3xl max-w-sm">
-        <div class="bg-base-950 p-4 rounded-2xl border border-base-border text-right mb-4">
-          <div id="sci-prev" class="text-xs font-mono text-slate-500 h-4"></div>
-          <div id="sci-display" class="font-mono text-3xl font-bold text-white truncate">0</div>
+      <div class="card-surface border border-subtle p-6 rounded-3xl max-w-sm">
+        <div class="input-surface p-4 rounded-2xl border text-right mb-4">
+          <div id="sci-prev" class="text-xs font-mono text-subtle h-4"></div>
+          <div id="sci-display" class="font-mono text-3xl font-bold truncate">0</div>
         </div>
 
         <div class="grid grid-cols-4 gap-2 text-sm font-mono font-medium">
           <button onclick="sciClear()" class="p-3 bg-red-500/10 text-red-400 rounded-xl hover:bg-red-500/20 transition">C</button>
-          <button onclick="sciOp('(')" class="p-3 bg-base-950 hover:bg-slate-800 text-slate-300 rounded-xl transition">(</button>
-          <button onclick="sciOp(')')" class="p-3 bg-base-950 hover:bg-slate-800 text-slate-300 rounded-xl transition">)</button>
-          <button onclick="sciOp('/')" class="p-3 bg-blue-500/10 text-blue-400 hover:bg-blue-500/20 rounded-xl transition">÷</button>
+          <button onclick="sciOp('(')" class="p-3 input-surface hover:opacity-80 rounded-xl transition">(</button>
+          <button onclick="sciOp(')')" class="p-3 input-surface hover:opacity-80 rounded-xl transition">)</button>
+          <button onclick="sciOp('/')" class="p-3 brand-color card-surface border border-subtle hover:opacity-80 rounded-xl transition">÷</button>
 
-          <button onclick="sciNum('7')" class="p-3 bg-base-950 hover:bg-slate-800 rounded-xl transition">7</button>
-          <button onclick="sciNum('8')" class="p-3 bg-base-950 hover:bg-slate-800 rounded-xl transition">8</button>
-          <button onclick="sciNum('9')" class="p-3 bg-base-950 hover:bg-slate-800 rounded-xl transition">9</button>
-          <button onclick="sciOp('*')" class="p-3 bg-blue-500/10 text-blue-400 hover:bg-blue-500/20 rounded-xl transition">×</button>
+          <button onclick="sciNum('7')" class="p-3 input-surface hover:opacity-80 rounded-xl transition">7</button>
+          <button onclick="sciNum('8')" class="p-3 input-surface hover:opacity-80 rounded-xl transition">8</button>
+          <button onclick="sciNum('9')" class="p-3 input-surface hover:opacity-80 rounded-xl transition">9</button>
+          <button onclick="sciOp('*')" class="p-3 brand-color card-surface border border-subtle hover:opacity-80 rounded-xl transition">×</button>
 
-          <button onclick="sciNum('4')" class="p-3 bg-base-950 hover:bg-slate-800 rounded-xl transition">4</button>
-          <button onclick="sciNum('5')" class="p-3 bg-base-950 hover:bg-slate-800 rounded-xl transition">5</button>
-          <button onclick="sciNum('6')" class="p-3 bg-base-950 hover:bg-slate-800 rounded-xl transition">6</button>
-          <button onclick="sciOp('-')" class="p-3 bg-blue-500/10 text-blue-400 hover:bg-blue-500/20 rounded-xl transition">−</button>
+          <button onclick="sciNum('4')" class="p-3 input-surface hover:opacity-80 rounded-xl transition">4</button>
+          <button onclick="sciNum('5')" class="p-3 input-surface hover:opacity-80 rounded-xl transition">5</button>
+          <button onclick="sciNum('6')" class="p-3 input-surface hover:opacity-80 rounded-xl transition">6</button>
+          <button onclick="sciOp('-')" class="p-3 brand-color card-surface border border-subtle hover:opacity-80 rounded-xl transition">−</button>
 
-          <button onclick="sciNum('1')" class="p-3 bg-base-950 hover:bg-slate-800 rounded-xl transition">1</button>
-          <button onclick="sciNum('2')" class="p-3 bg-base-950 hover:bg-slate-800 rounded-xl transition">2</button>
-          <button onclick="sciNum('3')" class="p-3 bg-base-950 hover:bg-slate-800 rounded-xl transition">3</button>
-          <button onclick="sciOp('+')" class="p-3 bg-blue-500/10 text-blue-400 hover:bg-blue-500/20 rounded-xl transition">+</button>
+          <button onclick="sciNum('1')" class="p-3 input-surface hover:opacity-80 rounded-xl transition">1</button>
+          <button onclick="sciNum('2')" class="p-3 input-surface hover:opacity-80 rounded-xl transition">2</button>
+          <button onclick="sciNum('3')" class="p-3 input-surface hover:opacity-80 rounded-xl transition">3</button>
+          <button onclick="sciOp('+')" class="p-3 brand-color card-surface border border-subtle hover:opacity-80 rounded-xl transition">+</button>
 
-          <button onclick="sciNum('0')" class="p-3 bg-base-950 hover:bg-slate-800 rounded-xl transition">0</button>
-          <button onclick="sciNum('.')" class="p-3 bg-base-950 hover:bg-slate-800 rounded-xl transition">.</button>
-          <button onclick="sciSqrt()" class="p-3 bg-base-950 hover:bg-slate-800 text-slate-300 rounded-xl transition">√</button>
-          <button onclick="sciEval()" class="p-3 bg-blue-600 hover:bg-blue-500 text-white rounded-xl transition">=</button>
+          <button onclick="sciNum('0')" class="p-3 input-surface hover:opacity-80 rounded-xl transition">0</button>
+          <button onclick="sciNum('.')" class="p-3 input-surface hover:opacity-80 rounded-xl transition">.</button>
+          <button onclick="sciSqrt()" class="p-3 input-surface hover:opacity-80 rounded-xl transition">√</button>
+          <button onclick="sciEval()" class="p-3 brand-btn rounded-xl transition">=</button>
         </div>
       </div>
 
-      <aside class="border-t border-base-border pt-8 max-w-sm">
-        <h3 class="text-xs font-mono uppercase text-slate-500 mb-3">Related Calculators</h3>
+      <aside class="border-t border-subtle pt-8 max-w-sm">
+        <h3 class="text-xs font-mono uppercase text-subtle mb-3">Related Calculators</h3>
         <div class="grid grid-cols-2 gap-3">
-          <a href="#currency" class="p-4 bg-base-900 border border-base-border hover:border-blue-400 rounded-xl block text-xs">
-            <span class="font-medium text-white block">Currency Tool</span>
-            <span class="text-slate-500 mt-1 block">Live forex pairs →</span>
+          <a href="#currency" class="p-4 card-surface border border-subtle hover:border-cyan-400 rounded-xl block text-xs">
+            <span class="font-medium block">Currency Tool</span>
+            <span class="text-subtle mt-1 block">Live forex pairs →</span>
           </a>
-          <a href="#age" class="p-4 bg-base-900 border border-base-border hover:border-blue-400 rounded-xl block text-xs">
-            <span class="font-medium text-white block">Age & Interval</span>
-            <span class="text-slate-500 mt-1 block">Calendar spans →</span>
+          <a href="#age" class="p-4 card-surface border border-subtle hover:border-cyan-400 rounded-xl block text-xs">
+            <span class="font-medium block">Age & Interval</span>
+            <span class="text-subtle mt-1 block">Calendar spans →</span>
           </a>
         </div>
       </aside>
     </section>
 
-    <!-- ================= 9. AGE CALCULATOR ================= -->
+    <!-- ================= 8. AGE CALCULATOR ================= -->
     <section id="view-age" class="page-view hidden space-y-8">
-      <div class="text-xs font-mono text-slate-500"><a href="#home" class="hover:text-blue-400">Hub</a> / Utilities / Age</div>
+      <div class="text-xs font-mono text-subtle"><a href="#home" class="hover:brand-color">Hub</a> / Utilities / Age</div>
       <div>
-        <h1 class="font-display text-3xl font-extrabold text-white">Chronological Age Calculator</h1>
-        <p class="text-slate-400 text-sm mt-1">Compute exact age, total days elapsed, and upcoming milestones.</p>
+        <h1 class="font-display text-3xl font-extrabold">Chronological Age Calculator</h1>
+        <p class="text-subtle text-sm mt-1">Compute exact chronological age, elapsed days, and intervals.</p>
       </div>
 
-      <div class="bg-base-900 border border-base-border p-6 md:p-8 rounded-3xl max-w-xl">
+      <div class="card-surface border border-subtle p-6 md:p-8 rounded-3xl max-w-xl">
         <div class="mb-6 text-sm">
-          <label class="block text-xs font-mono text-slate-400 mb-1.5">Date of Birth</label>
-          <input type="date" id="age-date" value="2000-01-01" class="w-full px-4 py-2.5 rounded-xl bg-base-950 border border-base-border focus:border-blue-400 text-white outline-none">
+          <label class="block text-xs font-mono text-subtle mb-1.5">Date of Birth</label>
+          <input type="date" id="age-date" value="2000-01-01" class="w-full px-4 py-2.5 rounded-xl input-surface border outline-none">
         </div>
 
-        <button onclick="calcAge()" class="w-full py-3 rounded-xl font-semibold text-sm bg-gradient-to-r from-blue-500 to-indigo-500 hover:opacity-90 transition text-white">Calculate Age Interval</button>
+        <button onclick="calcAge()" class="w-full py-3 rounded-xl font-semibold text-sm brand-btn transition">Calculate Age Interval</button>
 
-        <div class="mt-6 p-5 rounded-2xl bg-base-950 border border-base-border text-center">
-          <span class="text-xs font-mono uppercase text-slate-500">Calculated Metrics</span>
-          <p id="age-years" class="font-mono text-3xl font-bold text-white mt-1">26 Years Old</p>
-          <p id="age-days" class="text-xs font-mono text-slate-400 mt-1">approx 9,496 days elapsed</p>
+        <div class="mt-6 p-5 rounded-2xl input-surface border text-center">
+          <span class="text-xs font-mono uppercase text-subtle">Calculated Metrics</span>
+          <p id="age-years" class="font-mono text-3xl font-bold mt-1">26 Years Old</p>
+          <p id="age-days" class="text-xs font-mono text-subtle mt-1">approx 9,496 days elapsed</p>
         </div>
       </div>
 
-      <aside class="border-t border-base-border pt-8 max-w-xl">
-        <h3 class="text-xs font-mono uppercase text-slate-500 mb-3">Related Calculators</h3>
+      <aside class="border-t border-subtle pt-8 max-w-xl">
+        <h3 class="text-xs font-mono uppercase text-subtle mb-3">Related Calculators</h3>
         <div class="grid grid-cols-2 gap-3">
-          <a href="#bmi" class="p-4 bg-base-900 border border-base-border hover:border-blue-400 rounded-xl block text-xs">
-            <span class="font-medium text-white block">BMI Calculator</span>
-            <span class="text-slate-500 mt-1 block">Check body indices →</span>
+          <a href="#bmi" class="p-4 card-surface border border-subtle hover:border-cyan-400 rounded-xl block text-xs">
+            <span class="font-medium block">BMI Calculator</span>
+            <span class="text-subtle mt-1 block">Check body indices →</span>
           </a>
-          <a href="#pregnancy" class="p-4 bg-base-900 border border-base-border hover:border-blue-400 rounded-xl block text-xs">
-            <span class="font-medium text-white block">Pregnancy Due Date</span>
-            <span class="text-slate-500 mt-1 block">Milestone calculator →</span>
+          <a href="#currency" class="p-4 card-surface border border-subtle hover:border-cyan-400 rounded-xl block text-xs">
+            <span class="font-medium block">Currency Converter</span>
+            <span class="text-subtle mt-1 block">Convert FX pairs →</span>
           </a>
         </div>
       </aside>
     </section>
 
-    <!-- ================= 10. CURRENCY CONVERTER ================= -->
+    <!-- ================= 9. CURRENCY CONVERTER ================= -->
     <section id="view-currency" class="page-view hidden space-y-8">
-      <div class="text-xs font-mono text-slate-500"><a href="#home" class="hover:text-blue-400">Hub</a> / Utilities / Currency</div>
+      <div class="text-xs font-mono text-subtle"><a href="#home" class="hover:brand-color">Hub</a> / Utilities / Currency</div>
       <div>
-        <h1 class="font-display text-3xl font-extrabold text-white">Currency Quick Converter</h1>
-        <p class="text-slate-400 text-sm mt-1">Convert values across global reserve currencies instantly.</p>
+        <h1 class="font-display text-3xl font-extrabold">Currency Quick Converter</h1>
+        <p class="text-subtle text-sm mt-1">Convert values across global reserve currencies instantly.</p>
       </div>
 
-      <div class="bg-base-900 border border-base-border p-6 md:p-8 rounded-3xl max-w-xl">
+      <div class="card-surface border border-subtle p-6 md:p-8 rounded-3xl max-w-xl">
         <div class="space-y-4 mb-6 text-sm">
           <div>
-            <label class="block text-xs font-mono text-slate-400 mb-1.5">Amount</label>
-            <input type="number" id="curr-amt" value="1000" class="w-full px-4 py-2.5 rounded-xl bg-base-950 border border-base-border focus:border-blue-400 text-white outline-none">
+            <label class="block text-xs font-mono text-subtle mb-1.5">Amount</label>
+            <input type="number" id="curr-amt" value="1000" class="w-full px-4 py-2.5 rounded-xl input-surface border outline-none">
           </div>
           <div class="grid grid-cols-2 gap-4">
             <div>
-              <label class="block text-xs font-mono text-slate-400 mb-1.5">From</label>
-              <select id="curr-from" class="w-full px-4 py-2.5 rounded-xl bg-base-950 border border-base-border focus:border-blue-400 text-white outline-none">
+              <label class="block text-xs font-mono text-subtle mb-1.5">From</label>
+              <select id="curr-from" class="w-full px-4 py-2.5 rounded-xl input-surface border outline-none">
                 <option value="USD">USD - US Dollar</option>
                 <option value="EUR">EUR - Euro</option>
                 <option value="GBP">GBP - British Pound</option>
                 <option value="INR">INR - Indian Rupee</option>
                 <option value="JPY">JPY - Japanese Yen</option>
+                <option value="CAD">CAD - Canadian Dollar</option>
+                <option value="AUD">AUD - Australian Dollar</option>
               </select>
             </div>
             <div>
-              <label class="block text-xs font-mono text-slate-400 mb-1.5">To</label>
-              <select id="curr-to" class="w-full px-4 py-2.5 rounded-xl bg-base-950 border border-base-border focus:border-blue-400 text-white outline-none">
+              <label class="block text-xs font-mono text-subtle mb-1.5">To</label>
+              <select id="curr-to" class="w-full px-4 py-2.5 rounded-xl input-surface border outline-none">
                 <option value="EUR">EUR - Euro</option>
                 <option value="USD">USD - US Dollar</option>
                 <option value="GBP">GBP - British Pound</option>
                 <option value="INR">INR - Indian Rupee</option>
                 <option value="JPY">JPY - Japanese Yen</option>
+                <option value="CAD">CAD - Canadian Dollar</option>
+                <option value="AUD">AUD - Australian Dollar</option>
               </select>
             </div>
           </div>
         </div>
 
-        <button onclick="calcCurrency()" class="w-full py-3 rounded-xl font-semibold text-sm bg-gradient-to-r from-blue-500 to-indigo-500 hover:opacity-90 transition text-white">Execute Conversion</button>
+        <button onclick="calcCurrency()" class="w-full py-3 rounded-xl font-semibold text-sm brand-btn transition">Execute Conversion</button>
 
-        <div class="mt-6 p-5 rounded-2xl bg-base-950 border border-base-border text-center">
-          <span class="text-xs font-mono uppercase text-slate-500">Converted Valuation</span>
-          <p id="curr-out" class="font-mono text-3xl font-bold text-white mt-1">920.00 EUR</p>
+        <div class="mt-6 p-5 rounded-2xl input-surface border text-center">
+          <span class="text-xs font-mono uppercase text-subtle">Converted Valuation</span>
+          <p id="curr-out" class="font-mono text-3xl font-bold mt-1">920.00 EUR</p>
         </div>
       </div>
 
-      <aside class="border-t border-base-border pt-8 max-w-xl">
-        <h3 class="text-xs font-mono uppercase text-slate-500 mb-3">Related Calculators</h3>
+      <aside class="border-t border-subtle pt-8 max-w-xl">
+        <h3 class="text-xs font-mono uppercase text-subtle mb-3">Related Calculators</h3>
         <div class="grid grid-cols-2 gap-3">
-          <a href="#scientific" class="p-4 bg-base-900 border border-base-border hover:border-blue-400 rounded-xl block text-xs">
-            <span class="font-medium text-white block">Scientific Keypad</span>
-            <span class="text-slate-500 mt-1 block">General calculations →</span>
+          <a href="#scientific" class="p-4 card-surface border border-subtle hover:border-cyan-400 rounded-xl block text-xs">
+            <span class="font-medium block">Scientific Keypad</span>
+            <span class="text-subtle mt-1 block">General calculations →</span>
           </a>
-          <a href="#mortgage" class="p-4 bg-base-900 border border-base-border hover:border-blue-400 rounded-xl block text-xs">
-            <span class="font-medium text-white block">Mortgage Estimator</span>
-            <span class="text-slate-500 mt-1 block">Plan financing →</span>
+          <a href="#mortgage" class="p-4 card-surface border border-subtle hover:border-cyan-400 rounded-xl block text-xs">
+            <span class="font-medium block">Mortgage Estimator</span>
+            <span class="text-subtle mt-1 block">Plan financing →</span>
           </a>
         </div>
       </aside>
@@ -715,17 +777,63 @@
 
   </main>
 
-  <!-- Footer -->
-  <footer class="border-t border-base-border py-8 text-center text-xs font-mono text-slate-500 bg-base-950/80 mt-auto">
-    <p>© <span id="year"></span> OmniCalc. Pure client-side calculations with zero third-party scripts.</p>
+  <!-- Universal Footer -->
+  <footer class="border-t border-subtle py-8 text-center text-xs font-mono text-subtle card-surface mt-auto">
+    <p>© <span id="year"></span> OmniCalc. Pure client-side calculations with customizable palettes.</p>
   </footer>
 
-  <!-- Single JavaScript Router and Engines -->
+  <!-- Single JavaScript State, Router & Engines Layer -->
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // 1. Hash Routing Controller
-    const routes = ['home', 'mortgage', 'loan', 'compound', 'salary', 'bmi', 'bmr', 'pregnancy', 'scientific', 'age', 'currency'];
+    // 1. Light/Dark Mode & Palette Management
+    function toggleDarkMode() {
+      const isDark = document.documentElement.classList.toggle('dark');
+      localStorage.setItem('omni_dark_mode', isDark ? 'dark' : 'light');
+      updateThemeIcon(isDark);
+    }
+
+    function updateThemeIcon(isDark) {
+      document.getElementById('theme-icon').textContent = isDark ? '☀️' : '🌙';
+    }
+
+    function setTheme(themeName) {
+      document.documentElement.setAttribute('data-theme', themeName);
+      localStorage.setItem('omni_theme', themeName);
+    }
+
+    // Initialize saved preferences
+    const savedMode = localStorage.getItem('omni_dark_mode') || 'dark';
+    if (savedMode === 'light') {
+      document.documentElement.classList.remove('dark');
+      updateThemeIcon(false);
+    } else {
+      document.documentElement.classList.add('dark');
+      updateThemeIcon(true);
+    }
+
+    const savedTheme = localStorage.getItem('omni_theme') || 'cyan';
+    setTheme(savedTheme);
+
+    // 2. Currency Formatter Helper
+    const currencySymbols = {
+      USD: '$',
+      EUR: '€',
+      GBP: '£',
+      INR: '₹',
+      JPY: '¥',
+      CAD: 'CA$',
+      AUD: 'A$'
+    };
+
+    function formatMoney(amount, currencyCode) {
+      const sym = currencySymbols[currencyCode] || '$';
+      const dec = currencyCode === 'JPY' ? 0 : 2;
+      return `${sym}${Number(amount).toLocaleString('en-US', { minimumFractionDigits: dec, maximumFractionDigits: dec })}`;
+    }
+
+    // 3. Hash Routing Controller
+    const routes = ['home', 'mortgage', 'loan', 'compound', 'salary', 'bmi', 'bmr', 'scientific', 'age', 'currency'];
 
     function syncRoute() {
       const hash = window.location.hash.replace('#', '') || 'home';
@@ -739,10 +847,6 @@
 
     window.addEventListener('hashchange', syncRoute);
     window.addEventListener('DOMContentLoaded', () => {
-      const d = new Date();
-      d.setMonth(d.getMonth() - 2);
-      document.getElementById('preg-date').value = d.toISOString().split('T')[0];
-
       syncRoute();
       calcMortgage();
       calcLoan();
@@ -750,53 +854,60 @@
       calcSalary();
       calcBMI();
       calcBMR();
-      calcPregnancy();
       calcAge();
       calcCurrency();
     });
 
-    // 2. Calculations
+    // 4. Calculations
     function calcMortgage() {
+      const curr = document.getElementById('mort-curr').value;
       const price = parseFloat(document.getElementById('mort-price').value) || 0;
       const down = parseFloat(document.getElementById('mort-down').value) || 0;
       const r = ((parseFloat(document.getElementById('mort-rate').value) || 0) / 100) / 12;
       const n = (parseFloat(document.getElementById('mort-years').value) || 0) * 12;
       const tax = (parseFloat(document.getElementById('mort-tax').value) || 0) / 12;
       const p = price - down;
+      
       if (p <= 0 || r <= 0 || n <= 0) return;
       const pi = (p * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
-      document.getElementById('mort-out').textContent = '$' + (pi + tax).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      document.getElementById('mort-out').textContent = formatMoney(pi + tax, curr);
     }
 
     function calcLoan() {
+      const curr = document.getElementById('loan-curr').value;
       const p = parseFloat(document.getElementById('loan-amount').value) || 0;
       const r = ((parseFloat(document.getElementById('loan-rate').value) || 0) / 100) / 12;
       const n = parseFloat(document.getElementById('loan-months').value) || 0;
+      
       if (p <= 0 || r <= 0 || n <= 0) return;
       const emi = (p * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
       const totalInterest = (emi * n) - p;
-      document.getElementById('loan-monthly').textContent = '$' + emi.toFixed(2);
-      document.getElementById('loan-interest').textContent = '$' + totalInterest.toFixed(2);
+      document.getElementById('loan-monthly').textContent = formatMoney(emi, curr);
+      document.getElementById('loan-interest').textContent = formatMoney(totalInterest, curr);
     }
 
     function calcCompound() {
+      const curr = document.getElementById('comp-curr').value;
       const p = parseFloat(document.getElementById('comp-init').value) || 0;
       const pmt = parseFloat(document.getElementById('comp-monthly').value) || 0;
       const r = ((parseFloat(document.getElementById('comp-rate').value) || 0) / 100) / 12;
       const t = (parseFloat(document.getElementById('comp-years').value) || 0) * 12;
+      
       let total = p;
       for (let i = 0; i < t; i++) {
         total = total * (1 + r) + pmt;
       }
-      document.getElementById('comp-out').textContent = '$' + total.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      document.getElementById('comp-out').textContent = formatMoney(total, curr);
     }
 
     function calcSalary() {
+      const curr = document.getElementById('sal-curr').value;
       const gross = parseFloat(document.getElementById('sal-amount').value) || 0;
       const deduct = (parseFloat(document.getElementById('sal-deduct').value) || 0) / 100;
       const net = gross * (1 - deduct);
-      document.getElementById('sal-month').textContent = '$' + (net / 12).toFixed(2);
-      document.getElementById('sal-biweek').textContent = '$' + (net / 26).toFixed(2);
+      
+      document.getElementById('sal-month').textContent = formatMoney(net / 12, curr);
+      document.getElementById('sal-biweek').textContent = formatMoney(net / 26, curr);
     }
 
     function calcBMI() {
@@ -805,10 +916,10 @@
       if (!h || !w) return;
       const bmi = (w / (h * h)).toFixed(1);
       let note = 'Normal';
-      let color = 'text-emerald-400';
-      if (bmi < 18.5) { note = 'Underweight'; color = 'text-amber-400'; }
-      else if (bmi >= 25 && bmi < 30) { note = 'Overweight'; color = 'text-amber-400'; }
-      else if (bmi >= 30) { note = 'Obese'; color = 'text-rose-400'; }
+      let color = 'text-emerald-500';
+      if (bmi < 18.5) { note = 'Underweight'; color = 'text-amber-500'; }
+      else if (bmi >= 25 && bmi < 30) { note = 'Overweight'; color = 'text-amber-500'; }
+      else if (bmi >= 30) { note = 'Obese'; color = 'text-rose-500'; }
       document.getElementById('bmi-out').innerHTML = `${bmi} <span class="text-sm font-sans font-normal ${color}">(${note})</span>`;
     }
 
@@ -823,18 +934,7 @@
       document.getElementById('bmr-out-tdee').textContent = Math.round(base * 1.375).toLocaleString() + ' kcal';
     }
 
-    function calcPregnancy() {
-      const val = document.getElementById('preg-date').value;
-      if (!val) return;
-      const lmp = new Date(val);
-      const due = new Date(lmp.getTime());
-      due.setDate(due.getDate() + 280);
-      const diffWeeks = Math.floor((new Date() - lmp) / (1000 * 60 * 60 * 24 * 7));
-      document.getElementById('preg-due').textContent = due.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-      document.getElementById('preg-weeks').textContent = `Status: ~${diffWeeks} weeks elapsed`;
-    }
-
-    // Scientific Keypad Logic
+    // Scientific Keypad
     let sciExpr = '';
     function sciNum(v) { sciExpr += v; document.getElementById('sci-display').textContent = sciExpr; }
     function sciOp(v) { sciExpr += ' ' + v + ' '; document.getElementById('sci-display').textContent = sciExpr; }
@@ -873,7 +973,7 @@
       const amt = parseFloat(document.getElementById('curr-amt').value) || 0;
       const from = document.getElementById('curr-from').value;
       const to = document.getElementById('curr-to').value;
-      const rates = { USD: 1.0, EUR: 0.92, GBP: 0.79, INR: 83.5, JPY: 154.2 };
+      const rates = { USD: 1.0, EUR: 0.92, GBP: 0.79, INR: 83.5, JPY: 154.2, CAD: 1.36, AUD: 1.52 };
       const inUSD = amt / rates[from];
       const res = inUSD * rates[to];
       document.getElementById('curr-out').textContent = `${res.toFixed(2)} ${to}`;
