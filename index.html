@@ -4,76 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <!-- Primary SEO Meta Tags -->
   <title>OmniCalc — Precision Multi-Currency Financial & Health Calculators</title>
-  <meta name="title" content="OmniCalc — Precision Multi-Currency Financial & Health Calculators">
-  <meta name="description" content="Free, ultra-fast client-side suite for mortgage (PITI), loan amortization, compound interest, salary net pay, BMI, BMR, and currency exchange conversions.">
-  <meta name="keywords" content="mortgage calculator, piti calculator, loan amortization calculator, compound interest calculator, salary paycheck calculator, bmi calculator, bmr calculator, free online calculator">
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-  <link rel="canonical" href="https://calculators-six-chi.vercel.app/">
-
-  <!-- Open Graph / Social Media -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://calculators-six-chi.vercel.app/">
-  <meta property="og:title" content="OmniCalc — Precision Multi-Currency Financial & Health Calculators">
-  <meta property="og:description" content="Free, fast, ad-free calculators for mortgages, personal loans, compound interest, BMI, and currency exchange.">
-  <meta property="og:site_name" content="OmniCalc">
-
-  <!-- Twitter Meta Cards -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="OmniCalc — Free Online Computation Suite">
-  <meta name="twitter:description" content="Calculate mortgages, investments, health biometrics, and loans with zero latency.">
-
-  <!-- Google Verification -->
-  <meta name="google-site-verification" content="HghnuaWl13tSkerNhyKd6l4iM0_sMwM5hWKtvc-oUwQ" />
-
-  <!-- Google Structured Data (Schema.org JSON-LD) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebApplication",
-        "@id": "https://calculators-six-chi.vercel.app/#webapp",
-        "url": "https://calculators-six-chi.vercel.app/",
-        "name": "OmniCalc Suite",
-        "applicationCategory": "FinanceApplication, HealthApplication, UtilitiesApplication",
-        "operatingSystem": "All",
-        "browserRequirements": "Requires JavaScript. Requires HTML5.",
-        "description": "Multi-currency financial and biometric computation engine including Mortgage, Amortization, Compound Growth, BMI, and Scientific modules.",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "USD"
-        }
-      },
-      {
-        "@type": "WebSite",
-        "@id": "https://calculators-six-chi.vercel.app/#website",
-        "url": "https://calculators-six-chi.vercel.app/",
-        "name": "OmniCalc",
-        "publisher": {
-          "@type": "Organization",
-          "name": "OmniCalc"
-        }
-      }
-    ]
-  }
-  </script>
-
-  <!-- Website Tab Favicon -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2306B6D4'/%3E%3Cstop offset='100%25' stop-color='%238B5CF6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='8' fill='%2307090E'/%3E%3Crect x='1' y='1' width='30' height='30' rx='7' fill='none' stroke='url(%23g)' stroke-width='2'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='15' font-weight='bold' fill='url(%23g)' text-anchor='middle'%3Eƒx%3C/text%3E%3C/svg%3E">
+  <meta name="description" content="All-in-one suite of interactive cards for mortgages, amortization, compound interest, salary net pay, BMI, BMR, age, scientific keypad, and real-time live currency exchange.">
 
   <!-- Google Fonts: Syne & Inter & Space Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
-  <!-- Precompiled Pure Tailwind CSS (Cannot be blocked as an ad/script) -->
+  <!-- Tailwind CSS CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" integrity="sha512-wnea99tKIC3TUxUshraynvRivkcxgrymxSDBr4TcvNDjVZc50PBn4jM8IztYNQTHMebdFQRcCeyzqtltphcUcg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <style>
-    /* Global Dynamic Multi-Themes */
     :root {
       --bg-base: #F8FAFC;
       --bg-card: #FFFFFF;
@@ -127,7 +69,6 @@
     .font-display { font-family: 'Syne', sans-serif; }
     .font-mono { font-family: 'Space Mono', monospace; }
 
-    /* Surface & Colors */
     .app-bg { background-color: var(--bg-base) !important; color: var(--text-main) !important; }
     .card-surface { background-color: var(--bg-card) !important; border-color: var(--border-color) !important; }
     .input-surface { background-color: var(--bg-input) !important; border-color: var(--border-color) !important; color: var(--text-main) !important; }
@@ -146,40 +87,38 @@
       color: var(--brand-primary) !important;
     }
 
-    .mesh-border {
-      box-shadow: 0 0 0 1px var(--border-color);
-      transition: all 0.2s ease;
+    .tool-card {
+      border: 1px solid var(--border-color);
+      transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
     }
-    .mesh-border:hover {
-      box-shadow: 0 0 0 1px var(--brand-primary), 0 8px 24px -4px rgba(6, 182, 212, 0.15);
+    .tool-card:hover {
+      border-color: var(--brand-primary);
+      box-shadow: 0 10px 28px -6px rgba(6, 182, 212, 0.12);
+      transform: translateY(-2px);
     }
 
-    /* Fallback and Safety Resets */
+    .filter-btn.active {
+      background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary)) !important;
+      color: var(--brand-btn-text) !important;
+      border-color: transparent !important;
+    }
+
     svg.w-5.h-5 {
       width: 20px !important;
       height: 20px !important;
-      max-width: 20px !important;
-      max-height: 20px !important;
       display: block;
     }
-    .hidden {
+    .hidden-tool {
       display: none !important;
-    }
-    a {
-      text-decoration: none;
-      color: inherit;
     }
   </style>
 </head>
 <body class="app-bg antialiased selection:bg-cyan-500 selection:text-white">
 
-  <!-- Accessible Skip Navigation -->
-  <a href="#main-content" class="sr-only focus:not-sr-only focus:p-3 focus:bg-cyan-500 focus:text-black z-50">Skip to content</a>
-
-  <!-- Top Navigation Bar -->
+  <!-- Header -->
   <header class="sticky top-0 z-50 backdrop-blur-xl border-b border-subtle bg-opacity-80">
-    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-      <a href="#home" class="flex items-center gap-3 group" aria-label="OmniCalc Home">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3 group" aria-label="OmniCalc Home">
         <div class="w-8 h-8 rounded-lg brand-btn p-[1.5px] shadow-sm flex items-center justify-center">
           <div class="w-full h-full card-surface rounded-md flex items-center justify-center">
             <span class="font-display text-sm font-bold brand-color">OC</span>
@@ -188,7 +127,7 @@
         <span class="font-display font-bold text-lg tracking-wide group-hover:opacity-80 transition">OmniCalc</span>
       </a>
 
-      <!-- Controls: Theme Selector + Mode Toggle + Directory -->
+      <!-- Theme Controls -->
       <div class="flex items-center gap-3">
         <div class="flex items-center gap-1.5 p-1 rounded-xl card-surface border border-subtle" role="toolbar" aria-label="Color Themes">
           <button onclick="setTheme('cyan')" class="w-4 h-4 rounded-full bg-cyan-400 hover:scale-110 transition" title="Cyber Cyan" aria-label="Cyber Cyan Theme"></button>
@@ -196,778 +135,512 @@
           <button onclick="setTheme('violet')" class="w-4 h-4 rounded-full bg-purple-500 hover:scale-110 transition" title="Hyper Violet" aria-label="Hyper Violet Theme"></button>
         </div>
 
-        <button onclick="toggleDarkMode()" class="p-2 rounded-xl card-surface border border-subtle hover:scale-105 transition" title="Toggle Theme Mode" aria-label="Toggle Dark/Light Mode">
+        <button onclick="toggleDarkMode()" class="p-2 rounded-xl card-surface border border-subtle hover:scale-105 transition" title="Toggle Light/Dark Mode" aria-label="Toggle Dark Mode">
           <span id="theme-icon" class="text-xs">☀️</span>
         </button>
-
-        <a href="#home" class="text-xs font-mono px-3 py-1.5 rounded-xl border border-subtle card-surface hover:opacity-80 transition">
-          Directory
-        </a>
       </div>
     </div>
   </header>
 
-  <!-- Workspace Container -->
-  <main id="main-content" class="flex-grow max-w-6xl w-full mx-auto px-6 py-12">
+  <!-- Main Container -->
+  <main class="flex-grow max-w-7xl w-full mx-auto px-6 py-10 space-y-8">
 
-    <!-- ================= 0. DIRECTORY (HOME PAGE) ================= -->
-    <section id="view-home" class="page-view space-y-16">
-      <div class="text-center max-w-2xl mx-auto pt-6">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full card-surface border border-subtle brand-color text-xs font-mono font-medium mb-4">
-          <span class="w-2 h-2 rounded-full brand-btn animate-pulse"></span> Multi-Theme & Multi-Currency Engine
-        </div>
-        <h1 class="font-display text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-tight">
-          Tools calibrated for <span class="brand-color">instant clarity</span>.
-        </h1>
-        <p class="text-subtle text-sm md:text-base mt-4 leading-relaxed font-normal">
-          Client-side execution with international currency support, real estate modeling, and customizable interfaces.
-        </p>
+    <!-- Hero Header -->
+    <div class="text-center max-w-2xl mx-auto pt-2">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full card-surface border border-subtle brand-color text-xs font-mono font-medium mb-3">
+        <span class="w-2 h-2 rounded-full brand-btn animate-pulse"></span> Modular Interactive Suite
       </div>
+      <h1 class="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight">
+        Precision tools, <span class="brand-color">ready in cards</span>.
+      </h1>
+      <p class="text-subtle text-xs sm:text-sm mt-2 font-normal leading-relaxed">
+        Live-evaluating client-side calculators. Input data directly in any card for instant results.
+      </p>
+    </div>
 
-      <!-- Finance & Real Estate -->
-      <div>
-        <div class="flex items-center gap-2 pb-3 mb-5 border-b border-subtle">
-          <span class="font-mono text-xs font-semibold uppercase tracking-wider brand-color">01 / Finance & Real Estate (Multi-Currency)</span>
-        </div>
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          
-          <a href="#mortgage" class="mesh-border card-surface p-5 rounded-2xl transition-all flex flex-col justify-between group">
-            <div>
-              <div class="w-10 h-10 rounded-xl icon-badge flex items-center justify-center mb-4">
-                <svg class="w-5 h-5" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-              </div>
-              <h2 class="font-semibold group-hover:brand-color transition-colors">Mortgage (PITI)</h2>
-              <p class="text-xs text-subtle mt-2 leading-relaxed">Monthly principal, rate, taxes, and complete debt amortization.</p>
-            </div>
-            <span class="text-xs font-mono brand-color mt-5 inline-block">Launch tool →</span>
-          </a>
+    <!-- Category Filter Bar -->
+    <div class="flex items-center justify-center gap-2 flex-wrap text-xs font-mono">
+      <button onclick="filterCategory('all')" id="filter-all" class="filter-btn active px-4 py-2 rounded-xl border border-subtle card-surface transition">All Tools</button>
+      <button onclick="filterCategory('finance')" id="filter-finance" class="filter-btn px-4 py-2 rounded-xl border border-subtle card-surface transition">Finance & Loans</button>
+      <button onclick="filterCategory('health')" id="filter-health" class="filter-btn px-4 py-2 rounded-xl border border-subtle card-surface transition">Health & Vitals</button>
+      <button onclick="filterCategory('utilities')" id="filter-utilities" class="filter-btn px-4 py-2 rounded-xl border border-subtle card-surface transition">Math & Utilities</button>
+    </div>
 
-          <a href="#loan" class="mesh-border card-surface p-5 rounded-2xl transition-all flex flex-col justify-between group">
-            <div>
-              <div class="w-10 h-10 rounded-xl icon-badge flex items-center justify-center mb-4">
-                <svg class="w-5 h-5" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="19" y1="5" x2="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg>
-              </div>
-              <h2 class="font-semibold group-hover:brand-color transition-colors">Loan Calculator</h2>
-              <p class="text-xs text-subtle mt-2 leading-relaxed">Personal, auto, and student loans with total interest costs.</p>
-            </div>
-            <span class="text-xs font-mono brand-color mt-5 inline-block">Launch tool →</span>
-          </a>
+    <!-- Cards Grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="tools-grid">
 
-          <a href="#compound" class="mesh-border card-surface p-5 rounded-2xl transition-all flex flex-col justify-between group">
-            <div>
-              <div class="w-10 h-10 rounded-xl icon-badge flex items-center justify-center mb-4">
-                <svg class="w-5 h-5" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
-              </div>
-              <h2 class="font-semibold group-hover:brand-color transition-colors">Compound Interest</h2>
-              <p class="text-xs text-subtle mt-2 leading-relaxed">Forecast portfolio yield and compound wealth growth over time.</p>
-            </div>
-            <span class="text-xs font-mono brand-color mt-5 inline-block">Launch tool →</span>
-          </a>
-
-          <a href="#salary" class="mesh-border card-surface p-5 rounded-2xl transition-all flex flex-col justify-between group">
-            <div>
-              <div class="w-10 h-10 rounded-xl icon-badge flex items-center justify-center mb-4">
-                <svg class="w-5 h-5" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect width="20" height="12" x="2" y="6" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg>
-              </div>
-              <h2 class="font-semibold group-hover:brand-color transition-colors">Salary & Paycheck</h2>
-              <p class="text-xs text-subtle mt-2 leading-relaxed">Estimate take-home earnings across all common pay periods.</p>
-            </div>
-            <span class="text-xs font-mono brand-color mt-5 inline-block">Launch tool →</span>
-          </a>
-        </div>
-      </div>
-
-      <!-- Health & Biometrics -->
-      <div>
-        <div class="flex items-center gap-2 pb-3 mb-5 border-b border-subtle">
-          <span class="font-mono text-xs font-semibold uppercase tracking-wider brand-color">02 / Health & Biometrics</span>
-        </div>
-        <div class="grid sm:grid-cols-2 gap-4">
-          
-          <a href="#bmi" class="mesh-border card-surface p-5 rounded-2xl transition-all flex flex-col justify-between group">
-            <div>
-              <div class="w-10 h-10 rounded-xl icon-badge flex items-center justify-center mb-4">
-                <svg class="w-5 h-5" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-              </div>
-              <h2 class="font-semibold group-hover:brand-color transition-colors">BMI Calculator</h2>
-              <p class="text-xs text-subtle mt-2 leading-relaxed">Classify weight-to-height categories across WHO clinical bands.</p>
-            </div>
-            <span class="text-xs font-mono brand-color mt-5 inline-block">Launch tool →</span>
-          </a>
-
-          <a href="#bmr" class="mesh-border card-surface p-5 rounded-2xl transition-all flex flex-col justify-between group">
-            <div>
-              <div class="w-10 h-10 rounded-xl icon-badge flex items-center justify-center mb-4">
-                <svg class="w-5 h-5" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
-              </div>
-              <h2 class="font-semibold group-hover:brand-color transition-colors">Calorie & BMR</h2>
-              <p class="text-xs text-subtle mt-2 leading-relaxed">Resting basal expenditure & maintenance burn adjusted by lifestyle.</p>
-            </div>
-            <span class="text-xs font-mono brand-color mt-5 inline-block">Launch tool →</span>
-          </a>
-        </div>
-      </div>
-
-      <!-- Utilities & Math -->
-      <div>
-        <div class="flex items-center gap-2 pb-3 mb-5 border-b border-subtle">
-          <span class="font-mono text-xs font-semibold uppercase tracking-wider brand-color">03 / Utilities & Math</span>
-        </div>
-        <div class="grid sm:grid-cols-3 gap-4">
-          
-          <a href="#scientific" class="mesh-border card-surface p-5 rounded-2xl transition-all flex flex-col justify-between group">
-            <div>
-              <div class="w-10 h-10 rounded-xl icon-badge flex items-center justify-center mb-4">
-                <svg class="w-5 h-5" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M7 10h10M7 14h10"/></svg>
-              </div>
-              <h2 class="font-semibold group-hover:brand-color transition-colors">Scientific Keypad</h2>
-              <p class="text-xs text-subtle mt-2 leading-relaxed">Instant evaluation for brackets, roots, operations, and percentages.</p>
-            </div>
-            <span class="text-xs font-mono brand-color mt-5 inline-block">Launch tool →</span>
-          </a>
-
-          <a href="#age" class="mesh-border card-surface p-5 rounded-2xl transition-all flex flex-col justify-between group">
-            <div>
-              <div class="w-10 h-10 rounded-xl icon-badge flex items-center justify-center mb-4">
-                <svg class="w-5 h-5" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="4" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-              </div>
-              <h2 class="font-semibold group-hover:brand-color transition-colors">Age & Interval</h2>
-              <p class="text-xs text-subtle mt-2 leading-relaxed">Calculate exact intervals down to elapsed days, hours, and milestones.</p>
-            </div>
-            <span class="text-xs font-mono brand-color mt-5 inline-block">Launch tool →</span>
-          </a>
-
-          <a href="#currency" class="mesh-border card-surface p-5 rounded-2xl transition-all flex flex-col justify-between group">
-            <div>
-              <div class="w-10 h-10 rounded-xl icon-badge flex items-center justify-center mb-4">
-                <svg class="w-5 h-5" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg>
-              </div>
-              <h2 class="font-semibold group-hover:brand-color transition-colors">Currency Converter</h2>
-              <p class="text-xs text-subtle mt-2 leading-relaxed">Live cross-rate conversions across primary global reserve pairs.</p>
-            </div>
-            <span class="text-xs font-mono brand-color mt-5 inline-block">Launch tool →</span>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= 1. MORTGAGE CALCULATOR ================= -->
-    <section id="view-mortgage" class="page-view hidden space-y-8" aria-labelledby="mortgage-heading">
-      <nav class="text-xs font-mono text-subtle" aria-label="Breadcrumb">
-        <a href="#home" class="hover:brand-color">Hub</a> / Finance / Mortgage
-      </nav>
-      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-        <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-xl icon-badge flex items-center justify-center shrink-0">
-            <svg class="w-5 h-5" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-          </div>
-          <div>
-            <h1 id="mortgage-heading" class="font-display text-3xl font-extrabold">Mortgage (PITI) Estimator</h1>
-            <p class="text-subtle text-sm mt-0.5">Calculate monthly principal, interest, taxes, and homeowners insurance.</p>
-          </div>
-        </div>
-        <div class="flex items-center gap-2 card-surface border border-subtle px-3 py-1.5 rounded-xl">
-          <label for="mort-curr" class="text-xs font-mono text-subtle">Currency:</label>
-          <select id="mort-curr" onchange="calcMortgage()" class="bg-transparent brand-color font-mono text-sm font-semibold outline-none cursor-pointer">
-            <option value="USD" class="card-surface">USD ($)</option>
-            <option value="EUR" class="card-surface">EUR (€)</option>
-            <option value="GBP" class="card-surface">GBP (£)</option>
-            <option value="INR" class="card-surface">INR (₹)</option>
-            <option value="JPY" class="card-surface">JPY (¥)</option>
-            <option value="CAD" class="card-surface">CAD (CA$)</option>
-            <option value="AUD" class="card-surface">AUD (A$)</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="card-surface border border-subtle p-6 md:p-8 rounded-3xl max-w-xl">
-        <div class="space-y-4 mb-6 text-sm">
-          <div>
-            <label for="mort-price" class="block text-xs font-mono text-subtle mb-1.5">Home Valuation</label>
-            <input type="number" id="mort-price" value="400000" oninput="calcMortgage()" class="w-full px-4 py-2.5 rounded-xl input-surface border outline-none">
-          </div>
-          <div class="grid grid-cols-2 gap-4">
-            <div>
-              <label for="mort-down" class="block text-xs font-mono text-subtle mb-1.5">Down Payment</label>
-              <input type="number" id="mort-down" value="80000" oninput="calcMortgage()" class="w-full px-4 py-2.5 rounded-xl input-surface border outline-none">
-            </div>
-            <div>
-              <label for="mort-rate" class="block text-xs font-mono text-subtle mb-1.5">Interest Rate (%)</label>
-              <input type="number" id="mort-rate" step="0.05" value="6.5" oninput="calcMortgage()" class="w-full px-4 py-2.5 rounded-xl input-surface border outline-none">
-            </div>
-          </div>
-          <div class="grid grid-cols-2 gap-4">
-            <div>
-              <label for="mort-years" class="block text-xs font-mono text-subtle mb-1.5">Loan Term (Years)</label>
-              <input type="number" id="mort-years" value="30" oninput="calcMortgage()" class="w-full px-4 py-2.5 rounded-xl input-surface border outline-none">
-            </div>
-            <div>
-              <label for="mort-tax" class="block text-xs font-mono text-subtle mb-1.5">Annual Tax & Ins</label>
-              <input type="number" id="mort-tax" value="4800" oninput="calcMortgage()" class="w-full px-4 py-2.5 rounded-xl input-surface border outline-none">
-            </div>
-          </div>
-        </div>
-
-        <button onclick="calcMortgage()" class="w-full py-3 rounded-xl font-semibold text-sm brand-btn transition">Recalculate Payment</button>
-
-        <div class="mt-6 p-5 rounded-2xl input-surface border text-center relative group">
-          <button onclick="copyToClipboard('mort-out')" class="absolute top-3 right-3 text-xs font-mono px-2 py-1 rounded bg-black bg-opacity-20 hover:bg-opacity-40 text-subtle transition" title="Copy to clipboard">Copy</button>
-          <span class="text-xs font-mono uppercase text-subtle">Estimated Monthly Payment (PITI)</span>
-          <p id="mort-out" class="font-mono text-3xl font-bold mt-1">$2,422.56</p>
-        </div>
-      </div>
-
-      <aside class="border-t border-subtle pt-8 max-w-xl">
-        <h2 class="text-xs font-mono uppercase text-subtle mb-3">Related Calculators</h2>
-        <div class="grid grid-cols-2 gap-3">
-          <a href="#loan" class="p-4 card-surface border border-subtle hover:border-cyan-400 rounded-xl block text-xs">
-            <span class="font-medium block">General Loan Engine</span>
-            <span class="text-subtle mt-1 block">Check amortization table →</span>
-          </a>
-          <a href="#compound" class="p-4 card-surface border border-subtle hover:border-cyan-400 rounded-xl block text-xs">
-            <span class="font-medium block">Compound Interest</span>
-            <span class="text-subtle mt-1 block">Simulate down-payment savings →</span>
-          </a>
-        </div>
-      </aside>
-    </section>
-
-    <!-- ================= 2. LOAN CALCULATOR ================= -->
-    <section id="view-loan" class="page-view hidden space-y-8" aria-labelledby="loan-heading">
-      <nav class="text-xs font-mono text-subtle" aria-label="Breadcrumb">
-        <a href="#home" class="hover:brand-color">Hub</a> / Finance / Loan
-      </nav>
-      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-        <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-xl icon-badge flex items-center justify-center shrink-0">
-            <svg class="w-5 h-5" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="19" y1="5" x2="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg>
-          </div>
-          <div>
-            <h1 id="loan-heading" class="font-display text-3xl font-extrabold">Loan & Amortization</h1>
-            <p class="text-subtle text-sm mt-0.5">Model personal, auto, or student debt payment schedules.</p>
-          </div>
-        </div>
-        <div class="flex items-center gap-2 card-surface border border-subtle px-3 py-1.5 rounded-xl">
-          <label for="loan-curr" class="text-xs font-mono text-subtle">Currency:</label>
-          <select id="loan-curr" onchange="calcLoan()" class="bg-transparent brand-color font-mono text-sm font-semibold outline-none cursor-pointer">
-            <option value="USD" class="card-surface">USD ($)</option>
-            <option value="EUR" class="card-surface">EUR (€)</option>
-            <option value="GBP" class="card-surface">GBP (£)</option>
-            <option value="INR" class="card-surface">INR (₹)</option>
-            <option value="JPY" class="card-surface">JPY (¥)</option>
-            <option value="CAD" class="card-surface">CAD (CA$)</option>
-            <option value="AUD" class="card-surface">AUD (A$)</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="card-surface border border-subtle p-6 md:p-8 rounded-3xl max-w-xl">
-        <div class="space-y-4 mb-6 text-sm">
-          <div>
-            <label for="loan-amount" class="block text-xs font-mono text-subtle mb-1.5">Loan Principal</label>
-            <input type="number" id="loan-amount" value="25000" oninput="calcLoan()" class="w-full px-4 py-2.5 rounded-xl input-surface border outline-none">
-          </div>
-          <div class="grid grid-cols-2 gap-4">
-            <div>
-              <label for="loan-rate" class="block text-xs font-mono text-subtle mb-1.5">Interest Rate (%)</label>
-              <input type="number" id="loan-rate" step="0.05" value="7.5" oninput="calcLoan()" class="w-full px-4 py-2.5 rounded-xl input-surface border outline-none">
-            </div>
-            <div>
-              <label for="loan-months" class="block text-xs font-mono text-subtle mb-1.5">Term (Months)</label>
-              <input type="number" id="loan-months" value="60" oninput="calcLoan()" class="w-full px-4 py-2.5 rounded-xl input-surface border outline-none">
-            </div>
-          </div>
-        </div>
-
-        <button onclick="calcLoan()" class="w-full py-3 rounded-xl font-semibold text-sm brand-btn transition">Compute Amortization</button>
-
-        <div class="grid grid-cols-2 gap-3 mt-6">
-          <div class="p-4 rounded-2xl input-surface border text-center relative group">
-            <button onclick="copyToClipboard('loan-monthly')" class="absolute top-2 right-2 text-xs font-mono px-1.5 py-0.5 rounded bg-black bg-opacity-20 hover:bg-opacity-40 text-subtle">Copy</button>
-            <span class="text-xs font-mono text-subtle">Monthly Payment</span>
-            <p id="loan-monthly" class="font-mono text-2xl font-bold mt-1">$500.95</p>
-          </div>
-          <div class="p-4 rounded-2xl input-surface border text-center relative group">
-            <button onclick="copyToClipboard('loan-interest')" class="absolute top-2 right-2 text-xs font-mono px-1.5 py-0.5 rounded bg-black bg-opacity-20 hover:bg-opacity-40 text-subtle">Copy</button>
-            <span class="text-xs font-mono text-subtle">Total Interest</span>
-            <p id="loan-interest" class="font-mono text-2xl font-bold mt-1">$5,057.00</p>
-          </div>
-        </div>
-      </div>
-
-      <aside class="border-t border-subtle pt-8 max-w-xl">
-        <h2 class="text-xs font-mono uppercase text-subtle mb-3">Related Calculators</h2>
-        <div class="grid grid-cols-2 gap-3">
-          <a href="#salary" class="p-4 card-surface border border-subtle hover:border-cyan-400 rounded-xl block text-xs">
-            <span class="font-medium block">Salary Take-Home</span>
-            <span class="text-subtle mt-1 block">Check monthly budget →</span>
-          </a>
-          <a href="#mortgage" class="p-4 card-surface border border-subtle hover:border-cyan-400 rounded-xl block text-xs">
-            <span class="font-medium block">Mortgage Calculator</span>
-            <span class="text-subtle mt-1 block">Analyze real estate loans →</span>
-          </a>
-        </div>
-      </aside>
-    </section>
-
-    <!-- ================= 3. COMPOUND INTEREST ================= -->
-    <section id="view-compound" class="page-view hidden space-y-8" aria-labelledby="compound-heading">
-      <nav class="text-xs font-mono text-subtle" aria-label="Breadcrumb">
-        <a href="#home" class="hover:brand-color">Hub</a> / Finance / Compound
-      </nav>
-      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-        <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-xl icon-badge flex items-center justify-center shrink-0">
-            <svg class="w-5 h-5" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
-          </div>
-          <div>
-            <h1 id="compound-heading" class="font-display text-3xl font-extrabold">Compound Interest Growth</h1>
-            <p class="text-subtle text-sm mt-0.5">Project wealth accumulation with periodic deposits using closed-form annuity math.</p>
-          </div>
-        </div>
-        <div class="flex items-center gap-2 card-surface border border-subtle px-3 py-1.5 rounded-xl">
-          <label for="comp-curr" class="text-xs font-mono text-subtle">Currency:</label>
-          <select id="comp-curr" onchange="calcCompound()" class="bg-transparent brand-color font-mono text-sm font-semibold outline-none cursor-pointer">
-            <option value="USD" class="card-surface">USD ($)</option>
-            <option value="EUR" class="card-surface">EUR (€)</option>
-            <option value="GBP" class="card-surface">GBP (£)</option>
-            <option value="INR" class="card-surface">INR (₹)</option>
-            <option value="JPY" class="card-surface">JPY (¥)</option>
-            <option value="CAD" class="card-surface">CAD (CA$)</option>
-            <option value="AUD" class="card-surface">AUD (A$)</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="card-surface border border-subtle p-6 md:p-8 rounded-3xl max-w-xl">
-        <div class="grid grid-cols-2 gap-4 mb-4 text-sm">
-          <div>
-            <label for="comp-init" class="block text-xs font-mono text-subtle mb-1.5">Initial Principal</label>
-            <input type="number" id="comp-init" value="10000" oninput="calcCompound()" class="w-full px-4 py-2.5 rounded-xl input-surface border outline-none">
-          </div>
-          <div>
-            <label for="comp-monthly" class="block text-xs font-mono text-subtle mb-1.5">Monthly Addition</label>
-            <input type="number" id="comp-monthly" value="500" oninput="calcCompound()" class="w-full px-4 py-2.5 rounded-xl input-surface border outline-none">
-          </div>
-        </div>
-        <div class="grid grid-cols-2 gap-4 mb-6 text-sm">
-          <div>
-            <label for="comp-rate" class="block text-xs font-mono text-subtle mb-1.5">Annual Return (%)</label>
-            <input type="number" id="comp-rate" step="0.1" value="8.0" oninput="calcCompound()" class="w-full px-4 py-2.5 rounded-xl input-surface border outline-none">
-          </div>
-          <div>
-            <label for="comp-years" class="block text-xs font-mono text-subtle mb-1.5">Years Horizon</label>
-            <input type="number" id="comp-years" value="20" oninput="calcCompound()" class="w-full px-4 py-2.5 rounded-xl input-surface border outline-none">
-          </div>
-        </div>
-
-        <button onclick="calcCompound()" class="w-full py-3 rounded-xl font-semibold text-sm brand-btn transition">Compute Future Wealth</button>
-
-        <div class="mt-6 p-5 rounded-2xl input-surface border text-center relative group">
-          <button onclick="copyToClipboard('comp-out')" class="absolute top-3 right-3 text-xs font-mono px-2 py-1 rounded bg-black bg-opacity-20 hover:bg-opacity-40 text-subtle">Copy</button>
-          <span class="text-xs font-mono uppercase text-subtle">Projected Ending Balance</span>
-          <p id="comp-out" class="font-mono text-3xl font-bold mt-1">$341,908.68</p>
-        </div>
-      </div>
-
-      <aside class="border-t border-subtle pt-8 max-w-xl">
-        <h2 class="text-xs font-mono uppercase text-subtle mb-3">Related Calculators</h2>
-        <div class="grid grid-cols-2 gap-3">
-          <a href="#mortgage" class="p-4 card-surface border border-subtle hover:border-cyan-400 rounded-xl block text-xs">
-            <span class="font-medium block">Mortgage Estimator</span>
-            <span class="text-subtle mt-1 block">Compare equity vs investments →</span>
-          </a>
-          <a href="#salary" class="p-4 card-surface border border-subtle hover:border-cyan-400 rounded-xl block text-xs">
-            <span class="font-medium block">Salary Estimator</span>
-            <span class="text-subtle mt-1 block">Find savings rate →</span>
-          </a>
-        </div>
-      </aside>
-    </section>
-
-    <!-- ================= 4. SALARY / PAYCHECK ================= -->
-    <section id="view-salary" class="page-view hidden space-y-8" aria-labelledby="salary-heading">
-      <nav class="text-xs font-mono text-subtle" aria-label="Breadcrumb">
-        <a href="#home" class="hover:brand-color">Hub</a> / Finance / Salary
-      </nav>
-      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-        <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-xl icon-badge flex items-center justify-center shrink-0">
-            <svg class="w-5 h-5" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect width="20" height="12" x="2" y="6" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg>
-          </div>
-          <div>
-            <h1 id="salary-heading" class="font-display text-3xl font-extrabold">Salary & Paycheck Calculator</h1>
-            <p class="text-subtle text-sm mt-0.5">Estimate net take-home earnings across all common pay periods.</p>
-          </div>
-        </div>
-        <div class="flex items-center gap-2 card-surface border border-subtle px-3 py-1.5 rounded-xl">
-          <label for="sal-curr" class="text-xs font-mono text-subtle">Currency:</label>
-          <select id="sal-curr" onchange="calcSalary()" class="bg-transparent brand-color font-mono text-sm font-semibold outline-none cursor-pointer">
-            <option value="USD" class="card-surface">USD ($)</option>
-            <option value="EUR" class="card-surface">EUR (€)</option>
-            <option value="GBP" class="card-surface">GBP (£)</option>
-            <option value="INR" class="card-surface">INR (₹)</option>
-            <option value="JPY" class="card-surface">JPY (¥)</option>
-            <option value="CAD" class="card-surface">CAD (CA$)</option>
-            <option value="AUD" class="card-surface">AUD (A$)</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="card-surface border border-subtle p-6 md:p-8 rounded-3xl max-w-xl">
-        <div class="space-y-4 mb-6 text-sm">
-          <div>
-            <label for="sal-amount" class="block text-xs font-mono text-subtle mb-1.5">Gross Annual Compensation</label>
-            <input type="number" id="sal-amount" value="85000" oninput="calcSalary()" class="w-full px-4 py-2.5 rounded-xl input-surface border outline-none">
-          </div>
-          <div>
-            <label for="sal-deduct" class="block text-xs font-mono text-subtle mb-1.5">Estimated Blended Tax & Deductions (%)</label>
-            <input type="number" id="sal-deduct" value="25" oninput="calcSalary()" class="w-full px-4 py-2.5 rounded-xl input-surface border outline-none">
-          </div>
-        </div>
-
-        <button onclick="calcSalary()" class="w-full py-3 rounded-xl font-semibold text-sm brand-btn transition">Compute Take-Home</button>
-
-        <div class="grid grid-cols-2 gap-3 mt-6">
-          <div class="p-4 rounded-2xl input-surface border text-center relative group">
-            <button onclick="copyToClipboard('sal-month')" class="absolute top-2 right-2 text-xs font-mono px-1.5 py-0.5 rounded bg-black bg-opacity-20 hover:bg-opacity-40 text-subtle">Copy</button>
-            <span class="text-xs font-mono text-subtle">Monthly Net</span>
-            <p id="sal-month" class="font-mono text-2xl font-bold mt-1">$5,312.50</p>
-          </div>
-          <div class="p-4 rounded-2xl input-surface border text-center relative group">
-            <button onclick="copyToClipboard('sal-biweek')" class="absolute top-2 right-2 text-xs font-mono px-1.5 py-0.5 rounded bg-black bg-opacity-20 hover:bg-opacity-40 text-subtle">Copy</button>
-            <span class="text-xs font-mono text-subtle">Bi-Weekly Paycheck</span>
-            <p id="sal-biweek" class="font-mono text-2xl font-bold mt-1">$2,451.92</p>
-          </div>
-        </div>
-      </div>
-
-      <aside class="border-t border-subtle pt-8 max-w-xl">
-        <h2 class="text-xs font-mono uppercase text-subtle mb-3">Related Calculators</h2>
-        <div class="grid grid-cols-2 gap-3">
-          <a href="#compound" class="p-4 card-surface border border-subtle hover:border-cyan-400 rounded-xl block text-xs">
-            <span class="font-medium block">Compound Interest</span>
-            <span class="text-subtle mt-1 block">Plan monthly investment →</span>
-          </a>
-          <a href="#loan" class="p-4 card-surface border border-subtle hover:border-cyan-400 rounded-xl block text-xs">
-            <span class="font-medium block">Loan Calculator</span>
-            <span class="text-subtle mt-1 block">Check debt-to-income limits →</span>
-          </a>
-        </div>
-      </aside>
-    </section>
-
-    <!-- ================= 5. BMI CALCULATOR ================= -->
-    <section id="view-bmi" class="page-view hidden space-y-8" aria-labelledby="bmi-heading">
-      <nav class="text-xs font-mono text-subtle" aria-label="Breadcrumb">
-        <a href="#home" class="hover:brand-color">Hub</a> / Health / BMI
-      </nav>
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl icon-badge flex items-center justify-center shrink-0">
-          <svg class="w-5 h-5" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-        </div>
+      <!-- CARD 1: Mortgage (PITI) -->
+      <article data-category="finance" class="tool-card card-surface p-6 rounded-3xl flex flex-col justify-between shadow-sm">
         <div>
-          <h1 id="bmi-heading" class="font-display text-3xl font-extrabold">Body Mass Index (BMI)</h1>
-          <p class="text-subtle text-sm mt-0.5">Screening metric to evaluate body weight categories against clinical bands.</p>
-        </div>
-      </div>
-
-      <div class="card-surface border border-subtle p-6 md:p-8 rounded-3xl max-w-xl">
-        <div class="grid grid-cols-2 gap-4 mb-6 text-sm">
-          <div>
-            <label for="bmi-h" class="block text-xs font-mono text-subtle mb-1.5">Height (cm)</label>
-            <input type="number" id="bmi-h" value="178" oninput="calcBMI()" class="w-full px-4 py-2.5 rounded-xl input-surface border outline-none">
-          </div>
-          <div>
-            <label for="bmi-w" class="block text-xs font-mono text-subtle mb-1.5">Weight (kg)</label>
-            <input type="number" id="bmi-w" value="72" oninput="calcBMI()" class="w-full px-4 py-2.5 rounded-xl input-surface border outline-none">
-          </div>
-        </div>
-
-        <button onclick="calcBMI()" class="w-full py-3 rounded-xl font-semibold text-sm brand-btn transition">Compute Index Score</button>
-
-        <div class="mt-6 p-5 rounded-2xl input-surface border text-center relative group">
-          <button onclick="copyToClipboard('bmi-out', true)" class="absolute top-3 right-3 text-xs font-mono px-2 py-1 rounded bg-black bg-opacity-20 hover:bg-opacity-40 text-subtle">Copy</button>
-          <span class="text-xs font-mono uppercase text-subtle">Calculated Score</span>
-          <p id="bmi-out" class="font-mono text-3xl font-bold mt-1">22.7 <span class="text-sm font-sans font-normal text-emerald-400">(Normal)</span></p>
-        </div>
-      </div>
-
-      <aside class="border-t border-subtle pt-8 max-w-xl">
-        <h2 class="text-xs font-mono uppercase text-subtle mb-3">Related Calculators</h2>
-        <div class="grid grid-cols-2 gap-3">
-          <a href="#bmr" class="p-4 card-surface border border-subtle hover:border-cyan-400 rounded-xl block text-xs">
-            <span class="font-medium block">Calorie & BMR</span>
-            <span class="text-subtle mt-1 block">Calculate daily maintenance calories →</span>
-          </a>
-          <a href="#age" class="p-4 card-surface border border-subtle hover:border-cyan-400 rounded-xl block text-xs">
-            <span class="font-medium block">Age Calculator</span>
-            <span class="text-subtle mt-1 block">Check exact chronological age →</span>
-          </a>
-        </div>
-      </aside>
-    </section>
-
-    <!-- ================= 6. CALORIE & BMR ================= -->
-    <section id="view-bmr" class="page-view hidden space-y-8" aria-labelledby="bmr-heading">
-      <nav class="text-xs font-mono text-subtle" aria-label="Breadcrumb">
-        <a href="#home" class="hover:brand-color">Hub</a> / Health / BMR
-      </nav>
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl icon-badge flex items-center justify-center shrink-0">
-          <svg class="w-5 h-5" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
-        </div>
-        <div>
-          <h1 id="bmr-heading" class="font-display text-3xl font-extrabold">Calorie & BMR Estimator</h1>
-          <p class="text-subtle text-sm mt-0.5">Mifflin-St Jeor daily basal expenditure adjusted by physical activity.</p>
-        </div>
-      </div>
-
-      <div class="card-surface border border-subtle p-6 md:p-8 rounded-3xl max-w-xl">
-        <div class="grid grid-cols-3 gap-3 mb-4 text-sm">
-          <div>
-            <label for="bmr-a" class="block text-xs font-mono text-subtle mb-1.5">Age</label>
-            <input type="number" id="bmr-a" value="26" oninput="calcBMR()" class="w-full px-4 py-2.5 rounded-xl input-surface border outline-none">
-          </div>
-          <div>
-            <label for="bmr-s" class="block text-xs font-mono text-subtle mb-1.5">Sex</label>
-            <select id="bmr-s" onchange="calcBMR()" class="w-full px-4 py-2.5 rounded-xl input-surface border outline-none">
-              <option value="m">Male</option>
-              <option value="f">Female</option>
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-2.5">
+              <div class="w-9 h-9 rounded-xl icon-badge flex items-center justify-center">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              </div>
+              <div>
+                <h2 class="font-display font-bold text-base leading-tight">Mortgage (PITI)</h2>
+                <span class="text-subtle text-xs">Home debt & taxes</span>
+              </div>
+            </div>
+            <select id="mort-curr" onchange="calcMortgage()" class="bg-transparent brand-color font-mono text-xs font-semibold outline-none cursor-pointer border border-subtle rounded-lg px-2 py-1 card-surface">
+              <option value="USD">USD ($)</option>
+              <option value="EUR">EUR (€)</option>
+              <option value="GBP">GBP (£)</option>
+              <option value="INR">INR (₹)</option>
+              <option value="CAD">CAD (CA$)</option>
             </select>
           </div>
-          <div>
-            <label for="bmr-w" class="block text-xs font-mono text-subtle mb-1.5">Weight (kg)</label>
-            <input type="number" id="bmr-w" value="74" oninput="calcBMR()" class="w-full px-4 py-2.5 rounded-xl input-surface border outline-none">
-          </div>
-        </div>
-        <div class="mb-6 text-sm">
-          <label for="bmr-h" class="block text-xs font-mono text-subtle mb-1.5">Height (cm)</label>
-          <input type="number" id="bmr-h" value="180" oninput="calcBMR()" class="w-full px-4 py-2.5 rounded-xl input-surface border outline-none">
-        </div>
 
-        <button onclick="calcBMR()" class="w-full py-3 rounded-xl font-semibold text-sm brand-btn transition">Compute Caloric Expenditure</button>
-
-        <div class="grid grid-cols-2 gap-3 mt-6">
-          <div class="p-4 rounded-2xl input-surface border text-center relative group">
-            <button onclick="copyToClipboard('bmr-out-base')" class="absolute top-2 right-2 text-xs font-mono px-1.5 py-0.5 rounded bg-black bg-opacity-20 hover:bg-opacity-40 text-subtle">Copy</button>
-            <span class="text-xs font-mono text-subtle">Basal (BMR)</span>
-            <p id="bmr-out-base" class="font-mono text-2xl font-bold mt-1">1,735 kcal</p>
-          </div>
-          <div class="p-4 rounded-2xl input-surface border text-center relative group">
-            <button onclick="copyToClipboard('bmr-out-tdee')" class="absolute top-2 right-2 text-xs font-mono px-1.5 py-0.5 rounded bg-black bg-opacity-20 hover:bg-opacity-40 text-subtle">Copy</button>
-            <span class="text-xs font-mono text-subtle">Active (TDEE)</span>
-            <p id="bmr-out-tdee" class="font-mono text-2xl font-bold mt-1">2,385 kcal</p>
-          </div>
-        </div>
-      </div>
-
-      <aside class="border-t border-subtle pt-8 max-w-xl">
-        <h2 class="text-xs font-mono uppercase text-subtle mb-3">Related Calculators</h2>
-        <div class="grid grid-cols-2 gap-3">
-          <a href="#bmi" class="p-4 card-surface border border-subtle hover:border-cyan-400 rounded-xl block text-xs">
-            <span class="font-medium block">BMI Calculator</span>
-            <span class="text-subtle mt-1 block">Check weight thresholds →</span>
-          </a>
-          <a href="#age" class="p-4 card-surface border border-subtle hover:border-cyan-400 rounded-xl block text-xs">
-            <span class="font-medium block">Age Calculator</span>
-            <span class="text-subtle mt-1 block">Exact chronological age metrics →</span>
-          </a>
-        </div>
-      </aside>
-    </section>
-
-    <!-- ================= 7. SCIENTIFIC KEYPAD ================= -->
-    <section id="view-scientific" class="page-view hidden space-y-8" aria-labelledby="sci-heading">
-      <nav class="text-xs font-mono text-subtle" aria-label="Breadcrumb">
-        <a href="#home" class="hover:brand-color">Hub</a> / Utilities / Scientific
-      </nav>
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl icon-badge flex items-center justify-center shrink-0">
-          <svg class="w-5 h-5" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M7 10h10M7 14h10"/></svg>
-        </div>
-        <div>
-          <h1 id="sci-heading" class="font-display text-3xl font-extrabold">Scientific Keypad</h1>
-          <p class="text-subtle text-sm mt-0.5">Secure arithmetic engine for rapid arithmetic, powers, and roots.</p>
-        </div>
-      </div>
-
-      <div class="card-surface border border-subtle p-6 rounded-3xl max-w-sm">
-        <div class="input-surface p-4 rounded-2xl border text-right mb-4">
-          <div id="sci-prev" class="text-xs font-mono text-subtle h-4"></div>
-          <div id="sci-display" class="font-mono text-3xl font-bold truncate">0</div>
-        </div>
-
-        <div class="grid grid-cols-4 gap-2 text-sm font-mono font-medium">
-          <button onclick="sciClear()" class="p-3 bg-red-500 bg-opacity-10 text-red-400 rounded-xl hover:bg-opacity-20 transition">C</button>
-          <button onclick="sciOp('(')" class="p-3 input-surface hover:opacity-80 rounded-xl transition">(</button>
-          <button onclick="sciOp(')')" class="p-3 input-surface hover:opacity-80 rounded-xl transition">)</button>
-          <button onclick="sciOp('/')" class="p-3 brand-color card-surface border border-subtle hover:opacity-80 rounded-xl transition">÷</button>
-
-          <button onclick="sciNum('7')" class="p-3 input-surface hover:opacity-80 rounded-xl transition">7</button>
-          <button onclick="sciNum('8')" class="p-3 input-surface hover:opacity-80 rounded-xl transition">8</button>
-          <button onclick="sciNum('9')" class="p-3 input-surface hover:opacity-80 rounded-xl transition">9</button>
-          <button onclick="sciOp('*')" class="p-3 brand-color card-surface border border-subtle hover:opacity-80 rounded-xl transition">×</button>
-
-          <button onclick="sciNum('4')" class="p-3 input-surface hover:opacity-80 rounded-xl transition">4</button>
-          <button onclick="sciNum('5')" class="p-3 input-surface hover:opacity-80 rounded-xl transition">5</button>
-          <button onclick="sciNum('6')" class="p-3 input-surface hover:opacity-80 rounded-xl transition">6</button>
-          <button onclick="sciOp('-')" class="p-3 brand-color card-surface border border-subtle hover:opacity-80 rounded-xl transition">−</button>
-
-          <button onclick="sciNum('1')" class="p-3 input-surface hover:opacity-80 rounded-xl transition">1</button>
-          <button onclick="sciNum('2')" class="p-3 input-surface hover:opacity-80 rounded-xl transition">2</button>
-          <button onclick="sciNum('3')" class="p-3 input-surface hover:opacity-80 rounded-xl transition">3</button>
-          <button onclick="sciOp('+')" class="p-3 brand-color card-surface border border-subtle hover:opacity-80 rounded-xl transition">+</button>
-
-          <button onclick="sciNum('0')" class="p-3 input-surface hover:opacity-80 rounded-xl transition">0</button>
-          <button onclick="sciNum('.')" class="p-3 input-surface hover:opacity-80 rounded-xl transition">.</button>
-          <button onclick="sciSqrt()" class="p-3 input-surface hover:opacity-80 rounded-xl transition">√</button>
-          <button onclick="sciEval()" class="p-3 brand-btn rounded-xl transition">=</button>
-        </div>
-      </div>
-
-      <aside class="border-t border-subtle pt-8 max-w-sm">
-        <h2 class="text-xs font-mono uppercase text-subtle mb-3">Related Calculators</h2>
-        <div class="grid grid-cols-2 gap-3">
-          <a href="#currency" class="p-4 card-surface border border-subtle hover:border-cyan-400 rounded-xl block text-xs">
-            <span class="font-medium block">Currency Tool</span>
-            <span class="text-subtle mt-1 block">Live forex pairs →</span>
-          </a>
-          <a href="#age" class="p-4 card-surface border border-subtle hover:border-cyan-400 rounded-xl block text-xs">
-            <span class="font-medium block">Age & Interval</span>
-            <span class="text-subtle mt-1 block">Calendar spans →</span>
-          </a>
-        </div>
-      </aside>
-    </section>
-
-    <!-- ================= 8. AGE CALCULATOR ================= -->
-    <section id="view-age" class="page-view hidden space-y-8" aria-labelledby="age-heading">
-      <nav class="text-xs font-mono text-subtle" aria-label="Breadcrumb">
-        <a href="#home" class="hover:brand-color">Hub</a> / Utilities / Age
-      </nav>
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl icon-badge flex items-center justify-center shrink-0">
-          <svg class="w-5 h-5" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="4" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-        </div>
-        <div>
-          <h1 id="age-heading" class="font-display text-3xl font-extrabold">Chronological Age Calculator</h1>
-          <p class="text-subtle text-sm mt-0.5">Compute exact chronological age, elapsed days, and calendar milestone intervals.</p>
-        </div>
-      </div>
-
-      <div class="card-surface border border-subtle p-6 md:p-8 rounded-3xl max-w-xl">
-        <div class="mb-6 text-sm">
-          <label for="age-date" class="block text-xs font-mono text-subtle mb-1.5">Date of Birth</label>
-          <input type="date" id="age-date" value="2000-01-01" oninput="calcAge()" class="w-full px-4 py-2.5 rounded-xl input-surface border outline-none">
-        </div>
-
-        <button onclick="calcAge()" class="w-full py-3 rounded-xl font-semibold text-sm brand-btn transition">Calculate Age Interval</button>
-
-        <div class="mt-6 p-5 rounded-2xl input-surface border text-center relative group">
-          <button onclick="copyToClipboard('age-years')" class="absolute top-3 right-3 text-xs font-mono px-2 py-1 rounded bg-black bg-opacity-20 hover:bg-opacity-40 text-subtle">Copy</button>
-          <span class="text-xs font-mono uppercase text-subtle">Calculated Metrics</span>
-          <p id="age-years" class="font-mono text-3xl font-bold mt-1">26 Years, 0 Mos</p>
-          <p id="age-days" class="text-xs font-mono text-subtle mt-1">approx 9,750 days elapsed</p>
-        </div>
-      </div>
-
-      <aside class="border-t border-subtle pt-8 max-w-xl">
-        <h2 class="text-xs font-mono uppercase text-subtle mb-3">Related Calculators</h2>
-        <div class="grid grid-cols-2 gap-3">
-          <a href="#bmi" class="p-4 card-surface border border-subtle hover:border-cyan-400 rounded-xl block text-xs">
-            <span class="font-medium block">BMI Calculator</span>
-            <span class="text-subtle mt-1 block">Check body indices →</span>
-          </a>
-          <a href="#currency" class="p-4 card-surface border border-subtle hover:border-cyan-400 rounded-xl block text-xs">
-            <span class="font-medium block">Currency Converter</span>
-            <span class="text-subtle mt-1 block">Convert FX pairs →</span>
-          </a>
-        </div>
-      </aside>
-    </section>
-
-    <!-- ================= 9. CURRENCY CONVERTER ================= -->
-    <section id="view-currency" class="page-view hidden space-y-8" aria-labelledby="currency-heading">
-      <nav class="text-xs font-mono text-subtle" aria-label="Breadcrumb">
-        <a href="#home" class="hover:brand-color">Hub</a> / Utilities / Currency
-      </nav>
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl icon-badge flex items-center justify-center shrink-0">
-          <svg class="w-5 h-5" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg>
-        </div>
-        <div>
-          <h1 id="currency-heading" class="font-display text-3xl font-extrabold">Currency Quick Converter</h1>
-          <p class="text-subtle text-sm mt-0.5">Convert values across global reserve currencies instantly.</p>
-        </div>
-      </div>
-
-      <div class="card-surface border border-subtle p-6 md:p-8 rounded-3xl max-w-xl">
-        <div class="space-y-4 mb-6 text-sm">
-          <div>
-            <label for="curr-amt" class="block text-xs font-mono text-subtle mb-1.5">Amount</label>
-            <input type="number" id="curr-amt" value="1000" oninput="calcCurrency()" class="w-full px-4 py-2.5 rounded-xl input-surface border outline-none">
-          </div>
-          <div class="grid grid-cols-2 gap-4">
+          <div class="space-y-3 text-xs mb-5">
             <div>
-              <label for="curr-from" class="block text-xs font-mono text-subtle mb-1.5">From</label>
-              <select id="curr-from" onchange="calcCurrency()" class="w-full px-4 py-2.5 rounded-xl input-surface border outline-none">
-                <option value="USD">USD - US Dollar</option>
-                <option value="EUR">EUR - Euro</option>
-                <option value="GBP">GBP - British Pound</option>
-                <option value="INR">INR - Indian Rupee</option>
-                <option value="JPY">JPY - Japanese Yen</option>
-                <option value="CAD">CAD - Canadian Dollar</option>
-                <option value="AUD">AUD - Australian Dollar</option>
-              </select>
+              <label for="mort-price" class="block font-mono text-subtle mb-1">Home Price</label>
+              <input type="number" id="mort-price" value="400000" oninput="calcMortgage()" class="w-full px-3 py-2 rounded-xl input-surface border outline-none font-mono">
             </div>
-            <div>
-              <label for="curr-to" class="block text-xs font-mono text-subtle mb-1.5">To</label>
-              <select id="curr-to" onchange="calcCurrency()" class="w-full px-4 py-2.5 rounded-xl input-surface border outline-none">
-                <option value="EUR">EUR - Euro</option>
-                <option value="USD">USD - US Dollar</option>
-                <option value="GBP">GBP - British Pound</option>
-                <option value="INR">INR - Indian Rupee</option>
-                <option value="JPY">JPY - Japanese Yen</option>
-                <option value="CAD">CAD - Canadian Dollar</option>
-                <option value="AUD">AUD - Australian Dollar</option>
-              </select>
+            <div class="grid grid-cols-2 gap-2">
+              <div>
+                <label for="mort-down" class="block font-mono text-subtle mb-1">Down Payment</label>
+                <input type="number" id="mort-down" value="80000" oninput="calcMortgage()" class="w-full px-3 py-2 rounded-xl input-surface border outline-none font-mono">
+              </div>
+              <div>
+                <label for="mort-rate" class="block font-mono text-subtle mb-1">Rate (%)</label>
+                <input type="number" id="mort-rate" step="0.1" value="6.5" oninput="calcMortgage()" class="w-full px-3 py-2 rounded-xl input-surface border outline-none font-mono">
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-2">
+              <div>
+                <label for="mort-years" class="block font-mono text-subtle mb-1">Term (Years)</label>
+                <input type="number" id="mort-years" value="30" oninput="calcMortgage()" class="w-full px-3 py-2 rounded-xl input-surface border outline-none font-mono">
+              </div>
+              <div>
+                <label for="mort-tax" class="block font-mono text-subtle mb-1">Annual Tax & Ins</label>
+                <input type="number" id="mort-tax" value="4800" oninput="calcMortgage()" class="w-full px-3 py-2 rounded-xl input-surface border outline-none font-mono">
+              </div>
             </div>
           </div>
         </div>
 
-        <button onclick="calcCurrency()" class="w-full py-3 rounded-xl font-semibold text-sm brand-btn transition">Execute Conversion</button>
-
-        <div class="mt-6 p-5 rounded-2xl input-surface border text-center relative group">
-          <button onclick="copyToClipboard('curr-out')" class="absolute top-3 right-3 text-xs font-mono px-2 py-1 rounded bg-black bg-opacity-20 hover:bg-opacity-40 text-subtle">Copy</button>
-          <span class="text-xs font-mono uppercase text-subtle">Converted Valuation</span>
-          <p id="curr-out" class="font-mono text-3xl font-bold mt-1">920.00 EUR</p>
+        <div class="p-3.5 rounded-2xl input-surface border text-center relative group">
+          <button onclick="copyToClipboard('mort-out')" class="absolute top-2 right-2 text-[10px] font-mono px-2 py-0.5 rounded bg-black bg-opacity-20 hover:bg-opacity-40 text-subtle transition">Copy</button>
+          <span class="text-[11px] font-mono uppercase text-subtle">Estimated Monthly PITI</span>
+          <p id="mort-out" class="font-mono text-2xl font-bold mt-0.5 brand-color">$2,422.56</p>
         </div>
-      </div>
+      </article>
 
-      <aside class="border-t border-subtle pt-8 max-w-xl">
-        <h2 class="text-xs font-mono uppercase text-subtle mb-3">Related Calculators</h2>
-        <div class="grid grid-cols-2 gap-3">
-          <a href="#scientific" class="p-4 card-surface border border-subtle hover:border-cyan-400 rounded-xl block text-xs">
-            <span class="font-medium block">Scientific Keypad</span>
-            <span class="text-subtle mt-1 block">General calculations →</span>
-          </a>
-          <a href="#mortgage" class="p-4 card-surface border border-subtle hover:border-cyan-400 rounded-xl block text-xs">
-            <span class="font-medium block">Mortgage Estimator</span>
-            <span class="text-subtle mt-1 block">Plan financing →</span>
-          </a>
+      <!-- CARD 2: Loan Calculator -->
+      <article data-category="finance" class="tool-card card-surface p-6 rounded-3xl flex flex-col justify-between shadow-sm">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-2.5">
+              <div class="w-9 h-9 rounded-xl icon-badge flex items-center justify-center">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="19" y1="5" x2="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg>
+              </div>
+              <div>
+                <h2 class="font-display font-bold text-base leading-tight">Loan Amortization</h2>
+                <span class="text-subtle text-xs">Auto, personal & student</span>
+              </div>
+            </div>
+            <select id="loan-curr" onchange="calcLoan()" class="bg-transparent brand-color font-mono text-xs font-semibold outline-none cursor-pointer border border-subtle rounded-lg px-2 py-1 card-surface">
+              <option value="USD">USD ($)</option>
+              <option value="EUR">EUR (€)</option>
+              <option value="GBP">GBP (£)</option>
+              <option value="INR">INR (₹)</option>
+              <option value="CAD">CAD (CA$)</option>
+            </select>
+          </div>
+
+          <div class="space-y-3 text-xs mb-5">
+            <div>
+              <label for="loan-amount" class="block font-mono text-subtle mb-1">Principal Amount</label>
+              <input type="number" id="loan-amount" value="25000" oninput="calcLoan()" class="w-full px-3 py-2 rounded-xl input-surface border outline-none font-mono">
+            </div>
+            <div class="grid grid-cols-2 gap-2">
+              <div>
+                <label for="loan-rate" class="block font-mono text-subtle mb-1">Annual Rate (%)</label>
+                <input type="number" id="loan-rate" step="0.1" value="7.5" oninput="calcLoan()" class="w-full px-3 py-2 rounded-xl input-surface border outline-none font-mono">
+              </div>
+              <div>
+                <label for="loan-months" class="block font-mono text-subtle mb-1">Tenure (Months)</label>
+                <input type="number" id="loan-months" value="60" oninput="calcLoan()" class="w-full px-3 py-2 rounded-xl input-surface border outline-none font-mono">
+              </div>
+            </div>
+          </div>
         </div>
-      </aside>
-    </section>
 
+        <div class="grid grid-cols-2 gap-2">
+          <div class="p-3 rounded-2xl input-surface border text-center relative group">
+            <button onclick="copyToClipboard('loan-monthly')" class="absolute top-1.5 right-1.5 text-[10px] font-mono px-1.5 py-0.5 rounded bg-black bg-opacity-20 hover:bg-opacity-40 text-subtle">Copy</button>
+            <span class="text-[10px] font-mono text-subtle uppercase">Monthly EMI</span>
+            <p id="loan-monthly" class="font-mono text-lg font-bold mt-0.5 brand-color">$500.95</p>
+          </div>
+          <div class="p-3 rounded-2xl input-surface border text-center relative group">
+            <button onclick="copyToClipboard('loan-interest')" class="absolute top-1.5 right-1.5 text-[10px] font-mono px-1.5 py-0.5 rounded bg-black bg-opacity-20 hover:bg-opacity-40 text-subtle">Copy</button>
+            <span class="text-[10px] font-mono text-subtle uppercase">Total Interest</span>
+            <p id="loan-interest" class="font-mono text-lg font-bold mt-0.5">$5,057.00</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- CARD 3: Compound Interest -->
+      <article data-category="finance" class="tool-card card-surface p-6 rounded-3xl flex flex-col justify-between shadow-sm">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-2.5">
+              <div class="w-9 h-9 rounded-xl icon-badge flex items-center justify-center">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+              </div>
+              <div>
+                <h2 class="font-display font-bold text-base leading-tight">Compound Growth</h2>
+                <span class="text-subtle text-xs">Wealth accumulation</span>
+              </div>
+            </div>
+            <select id="comp-curr" onchange="calcCompound()" class="bg-transparent brand-color font-mono text-xs font-semibold outline-none cursor-pointer border border-subtle rounded-lg px-2 py-1 card-surface">
+              <option value="USD">USD ($)</option>
+              <option value="EUR">EUR (€)</option>
+              <option value="GBP">GBP (£)</option>
+              <option value="INR">INR (₹)</option>
+              <option value="CAD">CAD (CA$)</option>
+            </select>
+          </div>
+
+          <div class="space-y-3 text-xs mb-5">
+            <div class="grid grid-cols-2 gap-2">
+              <div>
+                <label for="comp-init" class="block font-mono text-subtle mb-1">Starting Fund</label>
+                <input type="number" id="comp-init" value="10000" oninput="calcCompound()" class="w-full px-3 py-2 rounded-xl input-surface border outline-none font-mono">
+              </div>
+              <div>
+                <label for="comp-monthly" class="block font-mono text-subtle mb-1">Monthly Deposit</label>
+                <input type="number" id="comp-monthly" value="500" oninput="calcCompound()" class="w-full px-3 py-2 rounded-xl input-surface border outline-none font-mono">
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-2">
+              <div>
+                <label for="comp-rate" class="block font-mono text-subtle mb-1">Annual Return (%)</label>
+                <input type="number" id="comp-rate" step="0.1" value="8.0" oninput="calcCompound()" class="w-full px-3 py-2 rounded-xl input-surface border outline-none font-mono">
+              </div>
+              <div>
+                <label for="comp-years" class="block font-mono text-subtle mb-1">Horizon (Years)</label>
+                <input type="number" id="comp-years" value="20" oninput="calcCompound()" class="w-full px-3 py-2 rounded-xl input-surface border outline-none font-mono">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-3.5 rounded-2xl input-surface border text-center relative group">
+          <button onclick="copyToClipboard('comp-out')" class="absolute top-2 right-2 text-[10px] font-mono px-2 py-0.5 rounded bg-black bg-opacity-20 hover:bg-opacity-40 text-subtle transition">Copy</button>
+          <span class="text-[11px] font-mono uppercase text-subtle">Ending Wealth Valuation</span>
+          <p id="comp-out" class="font-mono text-2xl font-bold mt-0.5 brand-color">$341,908.68</p>
+        </div>
+      </article>
+
+      <!-- CARD 4: Salary & Paycheck -->
+      <article data-category="finance" class="tool-card card-surface p-6 rounded-3xl flex flex-col justify-between shadow-sm">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-2.5">
+              <div class="w-9 h-9 rounded-xl icon-badge flex items-center justify-center">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect width="20" height="12" x="2" y="6" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg>
+              </div>
+              <div>
+                <h2 class="font-display font-bold text-base leading-tight">Salary Take-Home</h2>
+                <span class="text-subtle text-xs">Net paycheck estimation</span>
+              </div>
+            </div>
+            <select id="sal-curr" onchange="calcSalary()" class="bg-transparent brand-color font-mono text-xs font-semibold outline-none cursor-pointer border border-subtle rounded-lg px-2 py-1 card-surface">
+              <option value="USD">USD ($)</option>
+              <option value="EUR">EUR (€)</option>
+              <option value="GBP">GBP (£)</option>
+              <option value="INR">INR (₹)</option>
+              <option value="CAD">CAD (CA$)</option>
+            </select>
+          </div>
+
+          <div class="space-y-3 text-xs mb-5">
+            <div>
+              <label for="sal-amount" class="block font-mono text-subtle mb-1">Gross Annual Pay</label>
+              <input type="number" id="sal-amount" value="85000" oninput="calcSalary()" class="w-full px-3 py-2 rounded-xl input-surface border outline-none font-mono">
+            </div>
+            <div>
+              <label for="sal-deduct" class="block font-mono text-subtle mb-1">Total Deductions & Tax Rate (%)</label>
+              <input type="number" id="sal-deduct" value="25" oninput="calcSalary()" class="w-full px-3 py-2 rounded-xl input-surface border outline-none font-mono">
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-2">
+          <div class="p-3 rounded-2xl input-surface border text-center relative group">
+            <button onclick="copyToClipboard('sal-month')" class="absolute top-1.5 right-1.5 text-[10px] font-mono px-1.5 py-0.5 rounded bg-black bg-opacity-20 hover:bg-opacity-40 text-subtle">Copy</button>
+            <span class="text-[10px] font-mono text-subtle uppercase">Monthly Net</span>
+            <p id="sal-month" class="font-mono text-lg font-bold mt-0.5 brand-color">$5,312.50</p>
+          </div>
+          <div class="p-3 rounded-2xl input-surface border text-center relative group">
+            <button onclick="copyToClipboard('sal-biweek')" class="absolute top-1.5 right-1.5 text-[10px] font-mono px-1.5 py-0.5 rounded bg-black bg-opacity-20 hover:bg-opacity-40 text-subtle">Copy</button>
+            <span class="text-[10px] font-mono text-subtle uppercase">Bi-Weekly Net</span>
+            <p id="sal-biweek" class="font-mono text-lg font-bold mt-0.5">$2,451.92</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- CARD 5: BMI Calculator -->
+      <article data-category="health" class="tool-card card-surface p-6 rounded-3xl flex flex-col justify-between shadow-sm">
+        <div>
+          <div class="flex items-center gap-2.5 mb-4">
+            <div class="w-9 h-9 rounded-xl icon-badge flex items-center justify-center">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            </div>
+            <div>
+              <h2 class="font-display font-bold text-base leading-tight">Body Mass Index (BMI)</h2>
+              <span class="text-subtle text-xs">WHO standard weight scale</span>
+            </div>
+          </div>
+
+          <div class="space-y-3 text-xs mb-5">
+            <div class="grid grid-cols-2 gap-2">
+              <div>
+                <label for="bmi-h" class="block font-mono text-subtle mb-1">Height (cm)</label>
+                <input type="number" id="bmi-h" value="178" oninput="calcBMI()" class="w-full px-3 py-2 rounded-xl input-surface border outline-none font-mono">
+              </div>
+              <div>
+                <label for="bmi-w" class="block font-mono text-subtle mb-1">Weight (kg)</label>
+                <input type="number" id="bmi-w" value="72" oninput="calcBMI()" class="w-full px-3 py-2 rounded-xl input-surface border outline-none font-mono">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-3.5 rounded-2xl input-surface border text-center relative group">
+          <button onclick="copyToClipboard('bmi-out', true)" class="absolute top-2 right-2 text-[10px] font-mono px-2 py-0.5 rounded bg-black bg-opacity-20 hover:bg-opacity-40 text-subtle transition">Copy</button>
+          <span class="text-[11px] font-mono uppercase text-subtle">Calculated Score</span>
+          <p id="bmi-out" class="font-mono text-2xl font-bold mt-0.5">22.7 <span class="text-xs font-sans font-normal text-emerald-400">(Normal)</span></p>
+        </div>
+      </article>
+
+      <!-- CARD 6: Calorie & BMR -->
+      <article data-category="health" class="tool-card card-surface p-6 rounded-3xl flex flex-col justify-between shadow-sm">
+        <div>
+          <div class="flex items-center gap-2.5 mb-4">
+            <div class="w-9 h-9 rounded-xl icon-badge flex items-center justify-center">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+            </div>
+            <div>
+              <h2 class="font-display font-bold text-base leading-tight">Calorie & BMR Burn</h2>
+              <span class="text-subtle text-xs">Mifflin-St Jeor formula</span>
+            </div>
+          </div>
+
+          <div class="space-y-3 text-xs mb-5">
+            <div class="grid grid-cols-3 gap-2">
+              <div>
+                <label for="bmr-a" class="block font-mono text-subtle mb-1">Age</label>
+                <input type="number" id="bmr-a" value="26" oninput="calcBMR()" class="w-full px-2 py-2 rounded-xl input-surface border outline-none font-mono">
+              </div>
+              <div>
+                <label for="bmr-s" class="block font-mono text-subtle mb-1">Sex</label>
+                <select id="bmr-s" onchange="calcBMR()" class="w-full px-2 py-2 rounded-xl input-surface border outline-none font-mono">
+                  <option value="m">Male</option>
+                  <option value="f">Female</option>
+                </select>
+              </div>
+              <div>
+                <label for="bmr-w" class="block font-mono text-subtle mb-1">Weight (kg)</label>
+                <input type="number" id="bmr-w" value="74" oninput="calcBMR()" class="w-full px-2 py-2 rounded-xl input-surface border outline-none font-mono">
+              </div>
+            </div>
+            <div>
+              <label for="bmr-h" class="block font-mono text-subtle mb-1">Height (cm)</label>
+              <input type="number" id="bmr-h" value="180" oninput="calcBMR()" class="w-full px-3 py-2 rounded-xl input-surface border outline-none font-mono">
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-2">
+          <div class="p-3 rounded-2xl input-surface border text-center relative group">
+            <button onclick="copyToClipboard('bmr-out-base')" class="absolute top-1.5 right-1.5 text-[10px] font-mono px-1.5 py-0.5 rounded bg-black bg-opacity-20 hover:bg-opacity-40 text-subtle">Copy</button>
+            <span class="text-[10px] font-mono text-subtle uppercase">Basal (BMR)</span>
+            <p id="bmr-out-base" class="font-mono text-base font-bold mt-0.5 brand-color">1,735 kcal</p>
+          </div>
+          <div class="p-3 rounded-2xl input-surface border text-center relative group">
+            <button onclick="copyToClipboard('bmr-out-tdee')" class="absolute top-1.5 right-1.5 text-[10px] font-mono px-1.5 py-0.5 rounded bg-black bg-opacity-20 hover:bg-opacity-40 text-subtle">Copy</button>
+            <span class="text-[10px] font-mono text-subtle uppercase">Active (TDEE)</span>
+            <p id="bmr-out-tdee" class="font-mono text-base font-bold mt-0.5">2,385 kcal</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- CARD 7: Scientific Keypad -->
+      <article data-category="utilities" class="tool-card card-surface p-6 rounded-3xl flex flex-col justify-between shadow-sm">
+        <div>
+          <div class="flex items-center gap-2.5 mb-4">
+            <div class="w-9 h-9 rounded-xl icon-badge flex items-center justify-center">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M7 10h10M7 14h10"/></svg>
+            </div>
+            <div>
+              <h2 class="font-display font-bold text-base leading-tight">Scientific Keypad</h2>
+              <span class="text-subtle text-xs">Arithmetic & roots</span>
+            </div>
+          </div>
+
+          <div class="input-surface p-3 rounded-xl border text-right mb-3">
+            <div id="sci-prev" class="text-[10px] font-mono text-subtle h-3.5"></div>
+            <div id="sci-display" class="font-mono text-xl font-bold truncate">0</div>
+          </div>
+
+          <div class="grid grid-cols-4 gap-1.5 text-xs font-mono font-medium mb-1">
+            <button onclick="sciClear()" class="p-2 bg-red-500 bg-opacity-10 text-red-400 rounded-lg hover:bg-opacity-20 transition">C</button>
+            <button onclick="sciOp('(')" class="p-2 input-surface hover:opacity-80 rounded-lg transition">(</button>
+            <button onclick="sciOp(')')" class="p-2 input-surface hover:opacity-80 rounded-lg transition">)</button>
+            <button onclick="sciOp('/')" class="p-2 brand-color card-surface border border-subtle hover:opacity-80 rounded-lg transition">÷</button>
+
+            <button onclick="sciNum('7')" class="p-2 input-surface hover:opacity-80 rounded-lg transition">7</button>
+            <button onclick="sciNum('8')" class="p-2 input-surface hover:opacity-80 rounded-lg transition">8</button>
+            <button onclick="sciNum('9')" class="p-2 input-surface hover:opacity-80 rounded-lg transition">9</button>
+            <button onclick="sciOp('*')" class="p-2 brand-color card-surface border border-subtle hover:opacity-80 rounded-lg transition">×</button>
+
+            <button onclick="sciNum('4')" class="p-2 input-surface hover:opacity-80 rounded-lg transition">4</button>
+            <button onclick="sciNum('5')" class="p-2 input-surface hover:opacity-80 rounded-lg transition">5</button>
+            <button onclick="sciNum('6')" class="p-2 input-surface hover:opacity-80 rounded-lg transition">6</button>
+            <button onclick="sciOp('-')" class="p-2 brand-color card-surface border border-subtle hover:opacity-80 rounded-lg transition">−</button>
+
+            <button onclick="sciNum('1')" class="p-2 input-surface hover:opacity-80 rounded-lg transition">1</button>
+            <button onclick="sciNum('2')" class="p-2 input-surface hover:opacity-80 rounded-lg transition">2</button>
+            <button onclick="sciNum('3')" class="p-2 input-surface hover:opacity-80 rounded-lg transition">3</button>
+            <button onclick="sciOp('+')" class="p-2 brand-color card-surface border border-subtle hover:opacity-80 rounded-lg transition">+</button>
+
+            <button onclick="sciNum('0')" class="p-2 input-surface hover:opacity-80 rounded-lg transition">0</button>
+            <button onclick="sciNum('.')" class="p-2 input-surface hover:opacity-80 rounded-lg transition">.</button>
+            <button onclick="sciSqrt()" class="p-2 input-surface hover:opacity-80 rounded-lg transition">√</button>
+            <button onclick="sciEval()" class="p-2 brand-btn rounded-lg transition font-bold">=</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- CARD 8: Chronological Age -->
+      <article data-category="utilities" class="tool-card card-surface p-6 rounded-3xl flex flex-col justify-between shadow-sm">
+        <div>
+          <div class="flex items-center gap-2.5 mb-4">
+            <div class="w-9 h-9 rounded-xl icon-badge flex items-center justify-center">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="4" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+            <div>
+              <h2 class="font-display font-bold text-base leading-tight">Chronological Age</h2>
+              <span class="text-subtle text-xs">Calendar interval elapsed</span>
+            </div>
+          </div>
+
+          <div class="space-y-3 text-xs mb-5">
+            <div>
+              <label for="age-date" class="block font-mono text-subtle mb-1">Date of Birth</label>
+              <input type="date" id="age-date" value="2000-01-01" oninput="calcAge()" class="w-full px-3 py-2 rounded-xl input-surface border outline-none font-mono">
+            </div>
+          </div>
+        </div>
+
+        <div class="p-3.5 rounded-2xl input-surface border text-center relative group">
+          <button onclick="copyToClipboard('age-years')" class="absolute top-2 right-2 text-[10px] font-mono px-2 py-0.5 rounded bg-black bg-opacity-20 hover:bg-opacity-40 text-subtle transition">Copy</button>
+          <span class="text-[11px] font-mono uppercase text-subtle">Exact Milestones</span>
+          <p id="age-years" class="font-mono text-xl font-bold mt-0.5 brand-color">26 Years, 0 Mos</p>
+          <p id="age-days" class="text-[11px] font-mono text-subtle mt-0.5">approx 9,750 days elapsed</p>
+        </div>
+      </article>
+
+      <!-- CARD 9: REAL-TIME LIVE CURRENCY CONVERTER -->
+      <article data-category="utilities" class="tool-card card-surface p-6 rounded-3xl flex flex-col justify-between shadow-sm">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-2.5">
+              <div class="w-9 h-9 rounded-xl icon-badge flex items-center justify-center">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/>
+                </svg>
+              </div>
+              <div>
+                <h2 class="font-display font-bold text-base leading-tight">Currency Converter</h2>
+                <span class="text-subtle text-xs">Live exchange rates</span>
+              </div>
+            </div>
+            
+            <!-- Real-time sync badge & refresh trigger -->
+            <div class="flex items-center gap-1.5">
+              <span id="fx-status-badge" class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-mono bg-emerald-500 bg-opacity-10 text-emerald-400 border border-emerald-500 border-opacity-20">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Live
+              </span>
+              <button onclick="fetchLiveRates(true)" title="Force Refresh Rates" class="p-1 rounded-lg border border-subtle card-surface text-subtle hover:brand-color transition text-xs font-mono">
+                ↻
+              </button>
+            </div>
+          </div>
+
+          <div class="space-y-3 text-xs mb-4">
+            <div>
+              <label for="curr-amt" class="block font-mono text-subtle mb-1">Exchange Amount</label>
+              <input type="number" id="curr-amt" value="1000" min="0" step="any" oninput="calcCurrency()" class="w-full px-3 py-2 rounded-xl input-surface border outline-none font-mono">
+            </div>
+
+            <div class="grid grid-cols-5 gap-2 items-center">
+              <div class="col-span-2">
+                <label for="curr-from" class="block font-mono text-subtle mb-1">From</label>
+                <select id="curr-from" onchange="calcCurrency()" class="w-full px-2 py-2 rounded-xl input-surface border outline-none font-mono text-xs">
+                  <option value="USD" selected>USD ($)</option>
+                  <option value="EUR">EUR (€)</option>
+                  <option value="GBP">GBP (£)</option>
+                  <option value="INR">INR (₹)</option>
+                  <option value="JPY">JPY (¥)</option>
+                  <option value="CAD">CAD (CA$)</option>
+                  <option value="AUD">AUD (A$)</option>
+                  <option value="CHF">CHF (Fr)</option>
+                  <option value="SGD">SGD (S$)</option>
+                  <option value="AED">AED (د.إ)</option>
+                </select>
+              </div>
+
+              <div class="col-span-1 flex justify-center pt-5">
+                <button onclick="swapCurrencies()" title="Swap pair" class="p-2 rounded-xl border border-subtle card-surface hover:border-cyan-400 brand-color transition">
+                  ⇄
+                </button>
+              </div>
+
+              <div class="col-span-2">
+                <label for="curr-to" class="block font-mono text-subtle mb-1">To</label>
+                <select id="curr-to" onchange="calcCurrency()" class="w-full px-2 py-2 rounded-xl input-surface border outline-none font-mono text-xs">
+                  <option value="EUR" selected>EUR (€)</option>
+                  <option value="USD">USD ($)</option>
+                  <option value="GBP">GBP (£)</option>
+                  <option value="INR">INR (₹)</option>
+                  <option value="JPY">JPY (¥)</option>
+                  <option value="CAD">CAD (CA$)</option>
+                  <option value="AUD">AUD (A$)</option>
+                  <option value="CHF">CHF (Fr)</option>
+                  <option value="SGD">SGD (S$)</option>
+                  <option value="AED">AED (د.إ)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="p-3.5 rounded-2xl input-surface border text-center relative group">
+            <button onclick="copyToClipboard('curr-out')" class="absolute top-2 right-2 text-[10px] font-mono px-2 py-0.5 rounded bg-black bg-opacity-20 hover:bg-opacity-40 text-subtle transition">Copy</button>
+            <span class="text-[11px] font-mono uppercase text-subtle">Converted Value</span>
+            <p id="curr-out" class="font-mono text-2xl font-bold mt-0.5 brand-color">Loading...</p>
+            <p id="curr-unit-rate" class="text-[10px] font-mono text-subtle mt-0.5">1 USD = -- EUR</p>
+          </div>
+          <div class="flex items-center justify-between text-[10px] font-mono text-subtle mt-2 px-1">
+            <span id="fx-last-updated">Updated: Fetching...</span>
+            <span>Live FX Engine</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
   </main>
 
-  <!-- Universal Footer -->
+  <!-- Footer -->
   <footer class="border-t border-subtle py-8 text-center text-xs font-mono text-subtle card-surface mt-auto">
-    <p>© <span id="year"></span> OmniCalc Suite. Optimized client-side computational architecture.</p>
+    <p>© <span id="year"></span> OmniCalc Suite. Precision client-side computations.</p>
   </footer>
 
-  <!-- Script: Router, State, & Calculations -->
+  <!-- Scripts -->
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -998,7 +671,22 @@
     const savedTheme = localStorage.getItem('omni_theme') || 'cyan';
     setTheme(savedTheme);
 
-    // 2. Currency Formatter Helper
+    // 2. Interactive Filter Tabs
+    function filterCategory(cat) {
+      document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+      const activeBtn = document.getElementById('filter-' + cat);
+      if (activeBtn) activeBtn.classList.add('active');
+
+      document.querySelectorAll('#tools-grid article').forEach(card => {
+        if (cat === 'all' || card.dataset.category === cat) {
+          card.classList.remove('hidden-tool');
+        } else {
+          card.classList.add('hidden-tool');
+        }
+      });
+    }
+
+    // 3. Currency Symbols & Money Formatter
     const currencySymbols = {
       USD: '$', EUR: '€', GBP: '£', INR: '₹', JPY: '¥', CAD: 'CA$', AUD: 'A$'
     };
@@ -1009,61 +697,18 @@
       return `${sym}${Number(amount).toLocaleString('en-US', { minimumFractionDigits: dec, maximumFractionDigits: dec })}`;
     }
 
-    // 3. SEO Router & Dynamic Meta Tag Sync
-    const metaTitles = {
-      home: 'OmniCalc — Precision Multi-Currency Financial & Health Calculators',
-      mortgage: 'Mortgage (PITI) Calculator — Estimate Monthly Principal & Interest | OmniCalc',
-      loan: 'Loan Amortization Calculator — Personal, Auto & Student Debt | OmniCalc',
-      compound: 'Compound Interest Calculator — Investment Growth Forecast | OmniCalc',
-      salary: 'Salary & Paycheck Calculator — Net Take-Home Earnings | OmniCalc',
-      bmi: 'Body Mass Index (BMI) Calculator — Clinical Weight Screening | OmniCalc',
-      bmr: 'Calorie & BMR Calculator — Mifflin-St Jeor TDEE Burn | OmniCalc',
-      scientific: 'Scientific Calculator Keypad — Instant Online Arithmetic | OmniCalc',
-      age: 'Chronological Age Calculator — Exact Days, Hours & Milestones | OmniCalc',
-      currency: 'Currency Converter — Live Reserve FX Cross Rates | OmniCalc'
-    };
-
-    const routes = Object.keys(metaTitles);
-
-    function syncRoute() {
-      const hash = window.location.hash.replace('#', '') || 'home';
-      const active = routes.includes(hash) ? hash : 'home';
-
-      document.querySelectorAll('.page-view').forEach(el => el.classList.add('hidden'));
-      const activeElement = document.getElementById('view-' + active);
-      if (activeElement) activeElement.classList.remove('hidden');
-
-      if (metaTitles[active]) {
-        document.title = metaTitles[active];
-      }
-      window.scrollTo(0, 0);
-    }
-
-    window.addEventListener('hashchange', syncRoute);
-    window.addEventListener('DOMContentLoaded', () => {
-      syncRoute();
-      calcMortgage();
-      calcLoan();
-      calcCompound();
-      calcSalary();
-      calcBMI();
-      calcBMR();
-      calcAge();
-      calcCurrency();
-    });
-
     // 4. Copy-to-Clipboard Utility
     function copyToClipboard(elementId, isHTML = false) {
       const el = document.getElementById(elementId);
       const text = isHTML ? el.innerText : el.textContent;
       navigator.clipboard.writeText(text).then(() => {
         const orig = el.style.opacity;
-        el.style.opacity = '0.5';
+        el.style.opacity = '0.4';
         setTimeout(() => el.style.opacity = orig || '1', 200);
       });
     }
 
-    // 5. Mathematical Models
+    // 5. Financial & Biometric Calculations
 
     // 5a. Mortgage (PITI)
     function calcMortgage() {
@@ -1103,7 +748,7 @@
       document.getElementById('loan-interest').textContent = formatMoney(totalInterest, curr);
     }
 
-    // 5c. Compound Interest (Closed-Form Annuity)
+    // 5c. Compound Interest
     function calcCompound() {
       const curr = document.getElementById('comp-curr').value;
       const p = parseFloat(document.getElementById('comp-init').value) || 0;
@@ -1144,10 +789,10 @@
       if (bmi < 18.5) { note = 'Underweight'; color = 'text-amber-400'; }
       else if (bmi >= 25 && bmi < 30) { note = 'Overweight'; color = 'text-amber-400'; }
       else if (bmi >= 30) { note = 'Obese'; color = 'text-rose-400'; }
-      document.getElementById('bmi-out').innerHTML = `${bmi} <span class="text-sm font-sans font-normal ${color}">(${note})</span>`;
+      document.getElementById('bmi-out').innerHTML = `${bmi} <span class="text-xs font-sans font-normal ${color}">(${note})</span>`;
     }
 
-    // 5f. Calorie & BMR (Mifflin-St Jeor)
+    // 5f. Calorie & BMR
     function calcBMR() {
       const a = parseFloat(document.getElementById('bmr-a').value) || 0;
       const s = document.getElementById('bmr-s').value;
@@ -1160,7 +805,7 @@
       document.getElementById('bmr-out-tdee').textContent = Math.round(base * 1.375).toLocaleString() + ' kcal';
     }
 
-    // 5g. Scientific Keypad (No eval)
+    // 5g. Scientific Keypad
     let sciExpr = '';
     function sciNum(v) { 
       sciExpr += v; 
@@ -1249,7 +894,7 @@
       return stack[0] ?? 0;
     }
 
-    // 5h. Chronological Age Calculation
+    // 5h. Chronological Age
     function calcAge() {
       const val = document.getElementById('age-date').value;
       if (!val) return;
@@ -1276,16 +921,92 @@
       document.getElementById('age-days').textContent = `approx ${elapsedDays.toLocaleString()} days elapsed`;
     }
 
-    // 5i. Currency Quick Converter
+    // 5i. Real-Time Live Currency Converter Engine
+    let liveExchangeRates = {
+      USD: 1.0, EUR: 0.92, GBP: 0.79, INR: 83.5, JPY: 154.2, CAD: 1.36, AUD: 1.52, CHF: 0.90, SGD: 1.35, AED: 3.67
+    };
+
+    async function fetchLiveRates(forceNotice = false) {
+      const badge = document.getElementById('fx-status-badge');
+      const updateLabel = document.getElementById('fx-last-updated');
+      
+      if (badge) {
+        badge.className = "inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-mono bg-cyan-500 bg-opacity-10 text-cyan-400 border border-cyan-500 border-opacity-20";
+        badge.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-spin"></span> Syncing`;
+      }
+
+      try {
+        const response = await fetch('https://open.er-api.com/v6/latest/USD');
+        if (!response.ok) throw new Error('Network error');
+        
+        const data = await response.json();
+        if (data && data.rates) {
+          liveExchangeRates = { ...liveExchangeRates, ...data.rates };
+          
+          if (badge) {
+            badge.className = "inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-mono bg-emerald-500 bg-opacity-10 text-emerald-400 border border-emerald-500 border-opacity-20";
+            badge.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Live`;
+          }
+          if (updateLabel) {
+            const timeStr = data.time_last_update_utc ? new Date(data.time_last_update_utc).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : 'Just now';
+            updateLabel.textContent = `Updated: ${timeStr}`;
+          }
+        }
+      } catch (err) {
+        console.warn('Real-time rate fetch failed, using fallback cache:', err);
+        if (badge) {
+          badge.className = "inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-mono bg-amber-500 bg-opacity-10 text-amber-400 border border-amber-500 border-opacity-20";
+          badge.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span> Cached`;
+        }
+        if (updateLabel) updateLabel.textContent = 'Using cached baseline';
+      }
+
+      calcCurrency();
+    }
+
+    function swapCurrencies() {
+      const fromEl = document.getElementById('curr-from');
+      const toEl = document.getElementById('curr-to');
+      const temp = fromEl.value;
+      fromEl.value = toEl.value;
+      toEl.value = temp;
+      calcCurrency();
+    }
+
     function calcCurrency() {
-      const amt = parseFloat(document.getElementById('curr-amt').value) || 0;
+      const amtInput = document.getElementById('curr-amt');
       const from = document.getElementById('curr-from').value;
       const to = document.getElementById('curr-to').value;
-      const rates = { USD: 1.0, EUR: 0.92, GBP: 0.79, INR: 83.5, JPY: 154.2, CAD: 1.36, AUD: 1.52 };
-      const inUSD = amt / rates[from];
-      const res = inUSD * rates[to];
-      document.getElementById('curr-out').textContent = `${res.toFixed(2)} ${to}`;
+      const outEl = document.getElementById('curr-out');
+      const unitRateEl = document.getElementById('curr-unit-rate');
+      
+      const amt = parseFloat(amtInput.value) || 0;
+      const fromRate = liveExchangeRates[from] || 1.0;
+      const toRate = liveExchangeRates[to] || 1.0;
+
+      const rateMultiplier = toRate / fromRate;
+      const res = amt * rateMultiplier;
+
+      const decimals = (to === 'JPY') ? 0 : (res < 1 ? 4 : 2);
+      const formattedVal = res.toLocaleString('en-US', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+      
+      if (outEl) outEl.textContent = `${formattedVal} ${to}`;
+      if (unitRateEl) {
+        unitRateEl.textContent = `1 ${from} = ${(rateMultiplier).toFixed(4)} ${to}`;
+      }
     }
+
+    // Bootstrap computations and live feeds
+    window.addEventListener('DOMContentLoaded', () => {
+      calcMortgage();
+      calcLoan();
+      calcCompound();
+      calcSalary();
+      calcBMI();
+      calcBMR();
+      calcAge();
+      fetchLiveRates();
+    });
   </script>
 </body>
 </html>
