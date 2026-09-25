@@ -69,25 +69,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-            display: ['Syne', 'sans-serif'],
-            mono: ['"Space Mono"', 'monospace'],
-          }
-        }
-      }
-    }
-  </script>
+  <!-- Precompiled Pure Tailwind CSS (Cannot be blocked as an ad/script) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" integrity="sha512-wnea99tKIC3TUxUshraynvRivkcxgrymxSDBr4TcvNDjVZc50PBn4jM8IztYNQTHMebdFQRcCeyzqtltphcUcg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <style>
-    /* CSS Variables for Dynamic Multi-Themes */
+    /* Global Dynamic Multi-Themes */
     :root {
       --bg-base: #F8FAFC;
       --bg-card: #FFFFFF;
@@ -95,6 +81,9 @@
       --border-color: #E2E8F0;
       --text-main: #0F172A;
       --text-muted: #64748B;
+      --brand-primary: #06B6D4;
+      --brand-secondary: #8B5CF6;
+      --brand-btn-text: #07090E;
     }
 
     html.dark {
@@ -124,23 +113,37 @@
       --brand-btn-text: #FFFFFF;
     }
 
-    /* Core Theme Utilities */
-    .app-bg { background-color: var(--bg-base); color: var(--text-main); }
-    .card-surface { background-color: var(--bg-card); border-color: var(--border-color); }
-    .input-surface { background-color: var(--bg-input); border-color: var(--border-color); color: var(--text-main); }
-    .text-subtle { color: var(--text-muted); }
-    .brand-color { color: var(--brand-primary); }
-    .border-subtle { border-color: var(--border-color); }
+    body {
+      background-color: var(--bg-base) !important;
+      color: var(--text-main) !important;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .font-display { font-family: 'Syne', sans-serif; }
+    .font-mono { font-family: 'Space Mono', monospace; }
+
+    /* Surface & Colors */
+    .app-bg { background-color: var(--bg-base) !important; color: var(--text-main) !important; }
+    .card-surface { background-color: var(--bg-card) !important; border-color: var(--border-color) !important; }
+    .input-surface { background-color: var(--bg-input) !important; border-color: var(--border-color) !important; color: var(--text-main) !important; }
+    .text-subtle { color: var(--text-muted) !important; }
+    .brand-color { color: var(--brand-primary) !important; }
+    .border-subtle { border-color: var(--border-color) !important; }
 
     .brand-btn {
-      background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary));
-      color: var(--brand-btn-text);
+      background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary)) !important;
+      color: var(--brand-btn-text) !important;
     }
 
     .icon-badge {
-      background-color: var(--bg-input);
-      border: 1px solid var(--border-color);
-      color: var(--brand-primary);
+      background-color: var(--bg-input) !important;
+      border: 1px solid var(--border-color) !important;
+      color: var(--brand-primary) !important;
     }
 
     .mesh-border {
@@ -151,13 +154,13 @@
       box-shadow: 0 0 0 1px var(--brand-primary), 0 8px 24px -4px rgba(6, 182, 212, 0.15);
     }
 
-    /* HARD FALLBACKS: Prevents giant blown-up SVGs and broken page views if Tailwind script is blocked */
+    /* Fallback and Safety Resets */
     svg.w-5.h-5 {
-      width: 1.25rem !important;
-      height: 1.25rem !important;
+      width: 20px !important;
+      height: 20px !important;
       max-width: 20px !important;
       max-height: 20px !important;
-      display: inline-block;
+      display: block;
     }
     .hidden {
       display: none !important;
@@ -168,17 +171,17 @@
     }
   </style>
 </head>
-<body class="app-bg font-sans antialiased min-h-screen flex flex-col selection:bg-cyan-500/20 selection:text-cyan-400">
+<body class="app-bg antialiased selection:bg-cyan-500 selection:text-white">
 
   <!-- Accessible Skip Navigation -->
-  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:p-3 focus:bg-cyan-500 focus:text-black z-50">Skip to content</a>
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:p-3 focus:bg-cyan-500 focus:text-black z-50">Skip to content</a>
 
   <!-- Top Navigation Bar -->
   <header class="sticky top-0 z-50 backdrop-blur-xl border-b border-subtle bg-opacity-80">
     <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
       <a href="#home" class="flex items-center gap-3 group" aria-label="OmniCalc Home">
-        <div class="w-8 h-8 rounded-lg brand-btn p-[1.5px] shadow-sm">
-          <div class="w-full h-full card-surface rounded-[6.5px] flex items-center justify-center">
+        <div class="w-8 h-8 rounded-lg brand-btn p-[1.5px] shadow-sm flex items-center justify-center">
+          <div class="w-full h-full card-surface rounded-md flex items-center justify-center">
             <span class="font-display text-sm font-bold brand-color">OC</span>
           </div>
         </div>
@@ -213,7 +216,7 @@
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full card-surface border border-subtle brand-color text-xs font-mono font-medium mb-4">
           <span class="w-2 h-2 rounded-full brand-btn animate-pulse"></span> Multi-Theme & Multi-Currency Engine
         </div>
-        <h1 class="font-display text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.1]">
+        <h1 class="font-display text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-tight">
           Tools calibrated for <span class="brand-color">instant clarity</span>.
         </h1>
         <p class="text-subtle text-sm md:text-base mt-4 leading-relaxed font-normal">
@@ -236,7 +239,7 @@
               <h2 class="font-semibold group-hover:brand-color transition-colors">Mortgage (PITI)</h2>
               <p class="text-xs text-subtle mt-2 leading-relaxed">Monthly principal, rate, taxes, and complete debt amortization.</p>
             </div>
-            <span class="text-[11px] font-mono brand-color mt-5 inline-block">Launch tool →</span>
+            <span class="text-xs font-mono brand-color mt-5 inline-block">Launch tool →</span>
           </a>
 
           <a href="#loan" class="mesh-border card-surface p-5 rounded-2xl transition-all flex flex-col justify-between group">
@@ -247,7 +250,7 @@
               <h2 class="font-semibold group-hover:brand-color transition-colors">Loan Calculator</h2>
               <p class="text-xs text-subtle mt-2 leading-relaxed">Personal, auto, and student loans with total interest costs.</p>
             </div>
-            <span class="text-[11px] font-mono brand-color mt-5 inline-block">Launch tool →</span>
+            <span class="text-xs font-mono brand-color mt-5 inline-block">Launch tool →</span>
           </a>
 
           <a href="#compound" class="mesh-border card-surface p-5 rounded-2xl transition-all flex flex-col justify-between group">
@@ -258,7 +261,7 @@
               <h2 class="font-semibold group-hover:brand-color transition-colors">Compound Interest</h2>
               <p class="text-xs text-subtle mt-2 leading-relaxed">Forecast portfolio yield and compound wealth growth over time.</p>
             </div>
-            <span class="text-[11px] font-mono brand-color mt-5 inline-block">Launch tool →</span>
+            <span class="text-xs font-mono brand-color mt-5 inline-block">Launch tool →</span>
           </a>
 
           <a href="#salary" class="mesh-border card-surface p-5 rounded-2xl transition-all flex flex-col justify-between group">
@@ -269,7 +272,7 @@
               <h2 class="font-semibold group-hover:brand-color transition-colors">Salary & Paycheck</h2>
               <p class="text-xs text-subtle mt-2 leading-relaxed">Estimate take-home earnings across all common pay periods.</p>
             </div>
-            <span class="text-[11px] font-mono brand-color mt-5 inline-block">Launch tool →</span>
+            <span class="text-xs font-mono brand-color mt-5 inline-block">Launch tool →</span>
           </a>
         </div>
       </div>
@@ -289,7 +292,7 @@
               <h2 class="font-semibold group-hover:brand-color transition-colors">BMI Calculator</h2>
               <p class="text-xs text-subtle mt-2 leading-relaxed">Classify weight-to-height categories across WHO clinical bands.</p>
             </div>
-            <span class="text-[11px] font-mono brand-color mt-5 inline-block">Launch tool →</span>
+            <span class="text-xs font-mono brand-color mt-5 inline-block">Launch tool →</span>
           </a>
 
           <a href="#bmr" class="mesh-border card-surface p-5 rounded-2xl transition-all flex flex-col justify-between group">
@@ -300,7 +303,7 @@
               <h2 class="font-semibold group-hover:brand-color transition-colors">Calorie & BMR</h2>
               <p class="text-xs text-subtle mt-2 leading-relaxed">Resting basal expenditure & maintenance burn adjusted by lifestyle.</p>
             </div>
-            <span class="text-[11px] font-mono brand-color mt-5 inline-block">Launch tool →</span>
+            <span class="text-xs font-mono brand-color mt-5 inline-block">Launch tool →</span>
           </a>
         </div>
       </div>
@@ -320,7 +323,7 @@
               <h2 class="font-semibold group-hover:brand-color transition-colors">Scientific Keypad</h2>
               <p class="text-xs text-subtle mt-2 leading-relaxed">Instant evaluation for brackets, roots, operations, and percentages.</p>
             </div>
-            <span class="text-[11px] font-mono brand-color mt-5 inline-block">Launch tool →</span>
+            <span class="text-xs font-mono brand-color mt-5 inline-block">Launch tool →</span>
           </a>
 
           <a href="#age" class="mesh-border card-surface p-5 rounded-2xl transition-all flex flex-col justify-between group">
@@ -331,7 +334,7 @@
               <h2 class="font-semibold group-hover:brand-color transition-colors">Age & Interval</h2>
               <p class="text-xs text-subtle mt-2 leading-relaxed">Calculate exact intervals down to elapsed days, hours, and milestones.</p>
             </div>
-            <span class="text-[11px] font-mono brand-color mt-5 inline-block">Launch tool →</span>
+            <span class="text-xs font-mono brand-color mt-5 inline-block">Launch tool →</span>
           </a>
 
           <a href="#currency" class="mesh-border card-surface p-5 rounded-2xl transition-all flex flex-col justify-between group">
@@ -342,7 +345,7 @@
               <h2 class="font-semibold group-hover:brand-color transition-colors">Currency Converter</h2>
               <p class="text-xs text-subtle mt-2 leading-relaxed">Live cross-rate conversions across primary global reserve pairs.</p>
             </div>
-            <span class="text-[11px] font-mono brand-color mt-5 inline-block">Launch tool →</span>
+            <span class="text-xs font-mono brand-color mt-5 inline-block">Launch tool →</span>
           </a>
         </div>
       </div>
@@ -408,7 +411,7 @@
         <button onclick="calcMortgage()" class="w-full py-3 rounded-xl font-semibold text-sm brand-btn transition">Recalculate Payment</button>
 
         <div class="mt-6 p-5 rounded-2xl input-surface border text-center relative group">
-          <button onclick="copyToClipboard('mort-out')" class="absolute top-3 right-3 text-xs font-mono px-2 py-1 rounded bg-black/20 hover:bg-black/40 text-subtle transition" title="Copy to clipboard">Copy</button>
+          <button onclick="copyToClipboard('mort-out')" class="absolute top-3 right-3 text-xs font-mono px-2 py-1 rounded bg-black bg-opacity-20 hover:bg-opacity-40 text-subtle transition" title="Copy to clipboard">Copy</button>
           <span class="text-xs font-mono uppercase text-subtle">Estimated Monthly Payment (PITI)</span>
           <p id="mort-out" class="font-mono text-3xl font-bold mt-1">$2,422.56</p>
         </div>
@@ -480,12 +483,12 @@
 
         <div class="grid grid-cols-2 gap-3 mt-6">
           <div class="p-4 rounded-2xl input-surface border text-center relative group">
-            <button onclick="copyToClipboard('loan-monthly')" class="absolute top-2 right-2 text-[10px] font-mono px-1.5 py-0.5 rounded bg-black/20 hover:bg-black/40 text-subtle">Copy</button>
+            <button onclick="copyToClipboard('loan-monthly')" class="absolute top-2 right-2 text-xs font-mono px-1.5 py-0.5 rounded bg-black bg-opacity-20 hover:bg-opacity-40 text-subtle">Copy</button>
             <span class="text-xs font-mono text-subtle">Monthly Payment</span>
             <p id="loan-monthly" class="font-mono text-2xl font-bold mt-1">$500.95</p>
           </div>
           <div class="p-4 rounded-2xl input-surface border text-center relative group">
-            <button onclick="copyToClipboard('loan-interest')" class="absolute top-2 right-2 text-[10px] font-mono px-1.5 py-0.5 rounded bg-black/20 hover:bg-black/40 text-subtle">Copy</button>
+            <button onclick="copyToClipboard('loan-interest')" class="absolute top-2 right-2 text-xs font-mono px-1.5 py-0.5 rounded bg-black bg-opacity-20 hover:bg-opacity-40 text-subtle">Copy</button>
             <span class="text-xs font-mono text-subtle">Total Interest</span>
             <p id="loan-interest" class="font-mono text-2xl font-bold mt-1">$5,057.00</p>
           </div>
@@ -561,7 +564,7 @@
         <button onclick="calcCompound()" class="w-full py-3 rounded-xl font-semibold text-sm brand-btn transition">Compute Future Wealth</button>
 
         <div class="mt-6 p-5 rounded-2xl input-surface border text-center relative group">
-          <button onclick="copyToClipboard('comp-out')" class="absolute top-3 right-3 text-xs font-mono px-2 py-1 rounded bg-black/20 hover:bg-black/40 text-subtle">Copy</button>
+          <button onclick="copyToClipboard('comp-out')" class="absolute top-3 right-3 text-xs font-mono px-2 py-1 rounded bg-black bg-opacity-20 hover:bg-opacity-40 text-subtle">Copy</button>
           <span class="text-xs font-mono uppercase text-subtle">Projected Ending Balance</span>
           <p id="comp-out" class="font-mono text-3xl font-bold mt-1">$341,908.68</p>
         </div>
@@ -627,12 +630,12 @@
 
         <div class="grid grid-cols-2 gap-3 mt-6">
           <div class="p-4 rounded-2xl input-surface border text-center relative group">
-            <button onclick="copyToClipboard('sal-month')" class="absolute top-2 right-2 text-[10px] font-mono px-1.5 py-0.5 rounded bg-black/20 hover:bg-black/40 text-subtle">Copy</button>
+            <button onclick="copyToClipboard('sal-month')" class="absolute top-2 right-2 text-xs font-mono px-1.5 py-0.5 rounded bg-black bg-opacity-20 hover:bg-opacity-40 text-subtle">Copy</button>
             <span class="text-xs font-mono text-subtle">Monthly Net</span>
             <p id="sal-month" class="font-mono text-2xl font-bold mt-1">$5,312.50</p>
           </div>
           <div class="p-4 rounded-2xl input-surface border text-center relative group">
-            <button onclick="copyToClipboard('sal-biweek')" class="absolute top-2 right-2 text-[10px] font-mono px-1.5 py-0.5 rounded bg-black/20 hover:bg-black/40 text-subtle">Copy</button>
+            <button onclick="copyToClipboard('sal-biweek')" class="absolute top-2 right-2 text-xs font-mono px-1.5 py-0.5 rounded bg-black bg-opacity-20 hover:bg-opacity-40 text-subtle">Copy</button>
             <span class="text-xs font-mono text-subtle">Bi-Weekly Paycheck</span>
             <p id="sal-biweek" class="font-mono text-2xl font-bold mt-1">$2,451.92</p>
           </div>
@@ -684,7 +687,7 @@
         <button onclick="calcBMI()" class="w-full py-3 rounded-xl font-semibold text-sm brand-btn transition">Compute Index Score</button>
 
         <div class="mt-6 p-5 rounded-2xl input-surface border text-center relative group">
-          <button onclick="copyToClipboard('bmi-out', true)" class="absolute top-3 right-3 text-xs font-mono px-2 py-1 rounded bg-black/20 hover:bg-black/40 text-subtle">Copy</button>
+          <button onclick="copyToClipboard('bmi-out', true)" class="absolute top-3 right-3 text-xs font-mono px-2 py-1 rounded bg-black bg-opacity-20 hover:bg-opacity-40 text-subtle">Copy</button>
           <span class="text-xs font-mono uppercase text-subtle">Calculated Score</span>
           <p id="bmi-out" class="font-mono text-3xl font-bold mt-1">22.7 <span class="text-sm font-sans font-normal text-emerald-400">(Normal)</span></p>
         </div>
@@ -747,12 +750,12 @@
 
         <div class="grid grid-cols-2 gap-3 mt-6">
           <div class="p-4 rounded-2xl input-surface border text-center relative group">
-            <button onclick="copyToClipboard('bmr-out-base')" class="absolute top-2 right-2 text-[10px] font-mono px-1.5 py-0.5 rounded bg-black/20 hover:bg-black/40 text-subtle">Copy</button>
+            <button onclick="copyToClipboard('bmr-out-base')" class="absolute top-2 right-2 text-xs font-mono px-1.5 py-0.5 rounded bg-black bg-opacity-20 hover:bg-opacity-40 text-subtle">Copy</button>
             <span class="text-xs font-mono text-subtle">Basal (BMR)</span>
             <p id="bmr-out-base" class="font-mono text-2xl font-bold mt-1">1,735 kcal</p>
           </div>
           <div class="p-4 rounded-2xl input-surface border text-center relative group">
-            <button onclick="copyToClipboard('bmr-out-tdee')" class="absolute top-2 right-2 text-[10px] font-mono px-1.5 py-0.5 rounded bg-black/20 hover:bg-black/40 text-subtle">Copy</button>
+            <button onclick="copyToClipboard('bmr-out-tdee')" class="absolute top-2 right-2 text-xs font-mono px-1.5 py-0.5 rounded bg-black bg-opacity-20 hover:bg-opacity-40 text-subtle">Copy</button>
             <span class="text-xs font-mono text-subtle">Active (TDEE)</span>
             <p id="bmr-out-tdee" class="font-mono text-2xl font-bold mt-1">2,385 kcal</p>
           </div>
@@ -796,7 +799,7 @@
         </div>
 
         <div class="grid grid-cols-4 gap-2 text-sm font-mono font-medium">
-          <button onclick="sciClear()" class="p-3 bg-red-500/10 text-red-400 rounded-xl hover:bg-red-500/20 transition">C</button>
+          <button onclick="sciClear()" class="p-3 bg-red-500 bg-opacity-10 text-red-400 rounded-xl hover:bg-opacity-20 transition">C</button>
           <button onclick="sciOp('(')" class="p-3 input-surface hover:opacity-80 rounded-xl transition">(</button>
           <button onclick="sciOp(')')" class="p-3 input-surface hover:opacity-80 rounded-xl transition">)</button>
           <button onclick="sciOp('/')" class="p-3 brand-color card-surface border border-subtle hover:opacity-80 rounded-xl transition">÷</button>
@@ -862,7 +865,7 @@
         <button onclick="calcAge()" class="w-full py-3 rounded-xl font-semibold text-sm brand-btn transition">Calculate Age Interval</button>
 
         <div class="mt-6 p-5 rounded-2xl input-surface border text-center relative group">
-          <button onclick="copyToClipboard('age-years')" class="absolute top-3 right-3 text-xs font-mono px-2 py-1 rounded bg-black/20 hover:bg-black/40 text-subtle">Copy</button>
+          <button onclick="copyToClipboard('age-years')" class="absolute top-3 right-3 text-xs font-mono px-2 py-1 rounded bg-black bg-opacity-20 hover:bg-opacity-40 text-subtle">Copy</button>
           <span class="text-xs font-mono uppercase text-subtle">Calculated Metrics</span>
           <p id="age-years" class="font-mono text-3xl font-bold mt-1">26 Years, 0 Mos</p>
           <p id="age-days" class="text-xs font-mono text-subtle mt-1">approx 9,750 days elapsed</p>
@@ -936,7 +939,7 @@
         <button onclick="calcCurrency()" class="w-full py-3 rounded-xl font-semibold text-sm brand-btn transition">Execute Conversion</button>
 
         <div class="mt-6 p-5 rounded-2xl input-surface border text-center relative group">
-          <button onclick="copyToClipboard('curr-out')" class="absolute top-3 right-3 text-xs font-mono px-2 py-1 rounded bg-black/20 hover:bg-black/40 text-subtle">Copy</button>
+          <button onclick="copyToClipboard('curr-out')" class="absolute top-3 right-3 text-xs font-mono px-2 py-1 rounded bg-black bg-opacity-20 hover:bg-opacity-40 text-subtle">Copy</button>
           <span class="text-xs font-mono uppercase text-subtle">Converted Valuation</span>
           <p id="curr-out" class="font-mono text-3xl font-bold mt-1">920.00 EUR</p>
         </div>
